@@ -13,6 +13,7 @@ export default function Header() {
   const { cartCount, setIsCartOpen } = useCart();
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [isShopPinned, setIsShopPinned] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,18 +24,33 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollThreshold = window.innerHeight * 0.25; // 25% of viewport height
+      setIsScrolled(window.scrollY > scrollThreshold);
     };
+
+    // Set initial state
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleShopClick = () => {
+    setIsShopPinned(!isShopPinned);
+    setIsShopOpen(true);
+  };
+
+  const handleShopMenuClose = () => {
+    setIsShopOpen(false);
+    setIsShopPinned(false);
+  };
+
   const isAtTopAndHomePage = isHomePage && !isScrolled;
 
-  const headerClasses = `z-50 transition-all duration-300 w-full ${
+  const headerClasses = `-translate-y-px sticky top-0 z-50 w-full border-b transition-all duration-300 ${
     isAtTopAndHomePage
-      ? 'absolute top-0 bg-transparent text-white'
-      : 'sticky top-0 bg-white/90 backdrop-blur-sm border-b border-neutral-200 text-black'
+      ? 'border-transparent bg-transparent text-white'
+      : 'border-neutral-200 bg-white/90 backdrop-blur-sm text-black'
   }`;
 
   const linkClasses = `transition-colors ${
@@ -63,26 +79,35 @@ export default function Header() {
             <div
               className="relative"
               onMouseEnter={() => setIsShopOpen(true)}
-              onMouseLeave={() => setIsShopOpen(false)}
+              onMouseLeave={() => !isShopPinned && setIsShopOpen(false)}
             >
-              <button className={`flex items-center space-x-1 font-medium ${linkClasses}`}>
+              <button
+                onClick={handleShopClick}
+                className={`flex items-center space-x-1 font-medium ${linkClasses}`}
+              >
                 <span>Shop</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
               {isShopOpen && (
-                <div className="absolute text-black top-full left-0 mt-2 w-64 bg-white border border-neutral-200 rounded-lg shadow-xl py-2">
-                  {categories.map((category) => (
-                    <Link
-                      key={category.id}
-                      href={`/category/${category.slug}`}
-                      className="block px-4 py-3 hover:bg-neutral-50 transition-colors"
-                    >
-                      <div className="font-medium text-black">{category.name}</div>
-                      <div className="text-sm text-neutral-500">{category.description}</div>
-                    </Link>
-                  ))}
-                </div>
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={handleShopMenuClose}
+                  />
+                  <div className="absolute text-black top-full left-0 mt-2 w-64 bg-white border border-neutral-200 rounded-lg shadow-xl py-2 z-20">
+                    {categories.map((category) => (
+                      <Link
+                        key={category.id}
+                        href={`/category/${category.slug}`}
+                        onClick={handleShopMenuClose}
+                        className="block px-4 py-3 hover:bg-neutral-50 transition-colors"
+                      >
+                        <div className="font-medium text-black">{category.name}</div>
+                      </Link>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
@@ -109,7 +134,9 @@ export default function Header() {
                   isAtTopAndHomePage ? 'hover:bg-white/10' : 'hover:bg-neutral-100'
                 }`}
               >
-                <span className="font-medium text-sm">{currency.code}</span>
+                <span className="font-medium text-sm">
+                  {currency.flag} {currency.code}
+                </span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
@@ -132,7 +159,7 @@ export default function Header() {
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-medium">{curr.code}</span>
+                          <span className="font-medium">{curr.flag} {curr.code}</span>
                           <span className="text-sm text-neutral-500">{curr.symbol}</span>
                         </div>
                         <div className="text-sm text-neutral-500">{curr.name}</div>

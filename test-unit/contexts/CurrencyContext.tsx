@@ -7,7 +7,7 @@ interface Currency {
   code: string;
   symbol: string;
   name: string;
-  rate: number;
+  flag: string;
 }
 
 interface CurrencyContextType {

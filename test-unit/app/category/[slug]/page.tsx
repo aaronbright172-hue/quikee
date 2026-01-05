@@ -6,15 +6,11 @@ import { ChevronRight, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import productsData from '@/data/products.json';
+import { useParams } from 'next/navigation';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function CategoryPage({ params }: PageProps) {
-  const { slug } = params;
+export default function CategoryPage() {
+  const params = useParams();
+  const slug = params.slug;
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);

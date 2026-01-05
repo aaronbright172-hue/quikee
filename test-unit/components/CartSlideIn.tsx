@@ -80,12 +80,9 @@ export default function CartSlideIn() {
                     {item.variantText && (
                       <p className="text-xs text-neutral-500 mb-2">{item.variantText}</p>
                     )}
-                    <p className="font-semibold text-neutral-900">
-                      {formatPrice(item.price)}
-                    </p>
-
-                    {/* Quantity Controls */}
-                    <div className="flex items-center gap-3 mt-3">
+                    
+                    <div className="flex items-end justify-between mt-2">
+                      {/* Quantity Controls */}
                       <div className="flex items-center border border-neutral-300 rounded-lg">
                         <button
                           onClick={() =>
@@ -106,13 +103,24 @@ export default function CartSlideIn() {
                         </button>
                       </div>
 
-                      <button
+                      <div className="text-right">
+                        <p className="font-semibold text-neutral-900">
+                          {formatPrice(item.price * item.quantity)}
+                        </p>
+                        {item.quantity > 1 && (
+                          <p className="text-xs text-neutral-500">
+                            {formatPrice(item.price)} EACH
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <button
                         onClick={() => removeFromCart(item.id, item.variantText)}
-                        className="text-xs text-red-600 hover:text-red-700 font-medium"
+                        className="text-xs text-red-600 hover:text-red-700 font-medium mt-2"
                       >
                         Remove
                       </button>
-                    </div>
+                    
                   </div>
                 </div>
               ))}

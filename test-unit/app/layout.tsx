@@ -5,6 +5,7 @@ import { CartProvider } from '@/contexts/CartContext';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
 import Header from '@/components/Header';
 import CartSlideIn from '@/components/CartSlideIn';
+import Footer from '@/components/Footer'; // Import Footer component
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <CartSlideIn />
+            <Footer /> {/* Render Footer component here */}
           </CartProvider>
         </CurrencyProvider>
       </body>

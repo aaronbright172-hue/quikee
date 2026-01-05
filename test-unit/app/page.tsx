@@ -9,7 +9,9 @@ import HeroCarousel from '@/components/HeroCarousel';
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <HeroCarousel />
+      <div className="-mt-16">
+        <HeroCarousel />
+      </div>
 
       {/* What We Do Section */}
       <section id="how-it-works" className="py-20 sm:py-32 bg-white">

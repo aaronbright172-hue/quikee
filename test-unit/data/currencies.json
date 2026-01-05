@@ -3,77 +3,92 @@
     {
       "code": "USD",
       "symbol": "$",
-      "name": "US Dollar"
+      "name": "US Dollar",
+      "flag": "🇺🇸"
     },
     {
       "code": "AUD",
       "symbol": "A$",
-      "name": "Australian Dollar"
+      "name": "Australian Dollar",
+      "flag": "🇦🇺"
     },
     {
       "code": "EUR",
       "symbol": "€",
-      "name": "Euro"
+      "name": "Euro",
+      "flag": "🇪🇺"
     },
     {
       "code": "GBP",
       "symbol": "£",
-      "name": "British Pound"
+      "name": "British Pound",
+      "flag": "🇬🇧"
     },
     {
       "code": "CAD",
       "symbol": "C$",
-      "name": "Canadian Dollar"
+      "name": "Canadian Dollar",
+      "flag": "🇨🇦"
     },
     {
       "code": "JPY",
       "symbol": "¥",
-      "name": "Japanese Yen"
+      "name": "Japanese Yen",
+      "flag": "🇯🇵"
     },
     {
       "code": "NGN",
       "symbol": "₦",
-      "name": "Nigerian Naira"
+      "name": "Nigerian Naira",
+      "flag": "🇳🇬"
     },
     {
       "code": "INR",
       "symbol": "₹",
-      "name": "Indian Rupee"
+      "name": "Indian Rupee",
+      "flag": "🇮🇳"
     },
     {
       "code": "CNY",
       "symbol": "¥",
-      "name": "Chinese Yuan"
+      "name": "Chinese Yuan",
+      "flag": "🇨🇳"
     },
     {
       "code": "CHF",
       "symbol": "Fr",
-      "name": "Swiss Franc"
+      "name": "Swiss Franc",
+      "flag": "🇨🇭"
     },
     {
       "code": "SEK",
       "symbol": "kr",
-      "name": "Swedish Krona"
+      "name": "Swedish Krona",
+      "flag": "🇸🇪"
     },
     {
       "code": "NZD",
       "symbol": "NZ$",
-      "name": "New Zealand Dollar"
+      "name": "New Zealand Dollar",
+      "flag": "🇳🇿"
     },
     {
       "code": "SGD",
       "symbol": "S$",
-      "name": "Singapore Dollar"
+      "name": "Singapore Dollar",
+      "flag": "🇸🇬"
     },
     {
       "code": "HKD",
       "symbol": "HK$",
-      "name": "Hong Kong Dollar"
+      "name": "Hong Kong Dollar",
+      "flag": "🇭🇰"
     },
     {
       "code": "ZAR",
       "symbol": "R",
-      "name": "South African Rand"
+      "name": "South African Rand",
+      "flag": "🇿🇦"
     }
   ]
 }
