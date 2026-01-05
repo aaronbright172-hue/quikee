@@ -49,7 +49,9 @@
         "controller": "35A Smart Controller",
         "displayOptions": "SW900 or UKC1",
         "bestFor": "City streets, light off-road, everyday riding",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms"
+        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms",
+        "frameMaterial": "Aluminum",
+        "material": "Aluminum"
       },
       "variants": [
         {
@@ -62,6 +64,10 @@
         },
         {
           "name": "Dropout Size (mm)",
+          "options": ["135MM", "150MM"]
+        },
+        {
+          "name": "Drop Size (mm)",
           "options": ["135MM", "150MM"]
         }
       ]
@@ -85,8 +91,7 @@
         "controller": "45A Smart Controller",
         "displayOptions": "SW900 or UKC1",
         "bestFor": "City streets, light off-road, everyday riding",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms",
-        "defaultController": "Sine Wave (Leave a note in the order notes if you prefer Square Wave)"
+        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms"
       },
       "variants": [
         {

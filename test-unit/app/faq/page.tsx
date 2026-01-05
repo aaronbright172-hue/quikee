@@ -1,65 +1,74 @@
 import React from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
 
 export default function FAQPage() {
   const faqs = [
     {
-      question: 'What kind of products do you sell?',
+      question: 'WHAT KIND OF PRODUCTS DO YOU SELL?',
       answer:
-        'We sell test and evaluation units from major technology companies. These are real, fully functional products that are offered at a lower price because they are not part of the standard retail inventory.',
+        'We specialize in a range of high-performance tech products, including electric bikes and various related accessories designed for optimal performance and user experience.',
     },
     {
-      question: 'Are the products new?',
+      question: 'ARE YOUR PRODUCTS NEW OR REFURBISHED?',
       answer:
-        'The products are in new or like-new condition. They are typically used for demonstrations, testing, or as evaluation units by our partners. They are thoroughly inspected to ensure they are fully functional.',
+        'All our products are brand new unless explicitly stated otherwise. We source directly from manufacturers to ensure quality and authenticity for every item sold.',
     },
     {
-      question: 'Why are your prices so low?',
+      question: 'WHAT IS YOUR SHIPPING POLICY AND DELIVERY TIME?',
       answer:
-        'Our prices are low because we source our products directly from technology partners as test or evaluation units. This allows us to avoid the traditional retail markup and pass the savings directly to our customers.',
+        'Our shipping policy varies by product and destination. Generally, express shipping takes 2-4 weeks, standard 40-70 days, and production time is usually 5-10 business days.',
     },
     {
-      question: 'Do you offer a warranty?',
+      question: 'DO YOU OFFER INTERNATIONAL SHIPPING?',
       answer:
-        'Yes, all our products come with a 30-day warranty against defects. If you experience any issues with your product, please contact our customer support team.',
+        'Yes, we ship to a wide range of international countries. Shipping costs and delivery times will be calculated at checkout based on your location and chosen shipping method.',
     },
     {
-      question: 'What is your return policy?',
+      question: 'WHAT IS YOUR RETURN AND WARRANTY POLICY?',
       answer:
-        'We offer a 14-day return policy for all our products. If you are not satisfied with your purchase, you can return it for a full refund within 14 days of receiving it.',
+        'We offer a comprehensive return policy and manufacturer\'s warranty on all eligible products. Specific details can be found on our dedicated Return Policy and Warranty pages.',
+    },
+    {
+      question: 'HOW CAN I TRACK MY ORDER?',
+      answer:
+        'Once your order is shipped, you will receive a tracking number via email. You can use this number to monitor the status and estimated delivery of your package online.',
+    },
+    {
+      question: 'WHAT PAYMENT METHODS DO YOU ACCEPT?',
+      answer:
+        'We accept a variety of secure payment methods, including major credit cards, PayPal, and other digital payment options, ensuring a smooth and safe checkout process.',
+    },
+    {
+      question: 'DO YOU PROVIDE CUSTOMER SUPPORT?',
+      answer:
+        'Absolutely! Our dedicated customer support team is available to assist you with any questions, concerns, or issues you may encounter with our products or services.',
+    },
+    {
+      question: 'CAN I CHANGE OR CANCEL MY ORDER AFTER IT\'S PLACED?',
+      answer:
+        'Order modifications or cancellations are possible within a limited timeframe after placement. Please contact our support team immediately for assistance with such requests.',
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-left mb-10">
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
-            Frequently Asked Questions
+            FREQUENTLY ASKED QUESTIONS
           </h1>
-          <p className="text-lg text-neutral-600">
-            Find answers to common questions below.
-          </p>
         </div>
 
-        <div className="mt-12 max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-lg font-medium">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-base text-neutral-800">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="space-y-8">
+          {faqs.map((faq, index) => (
+            <div key={index}>
+              <h3 className="font-bold text-neutral-900 mb-2">
+                {faq.question}
+              </h3>
+              <p className="text-neutral-800 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 # Development Plan
 
-This document outlines the features and improvements to be implemented in the 2FAST TECH e-commerce application.
+This document outlines the features and improvements to be implemented in the QuantumPoint e-commerce application.
 
 ## 1. Fix "Add to Cart" Quantity Bug
 

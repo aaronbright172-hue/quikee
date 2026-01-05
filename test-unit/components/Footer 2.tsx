@@ -50,14 +50,14 @@ const Footer: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/terms-conditions" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link href="/terms-and-conditions" className="text-sm text-gray-600 hover:text-gray-900">
                 Terms & Conditions
               </Link>
             </li>
           </ul>
           <div className="mt-4">
             <Select onValueChange={handleCurrencyChange} value={currentCurrency.code}>
-              <SelectTrigger className="w-[150px]">
+              <SelectTrigger className="w-[100px]">
                 <SelectValue>
                   {currentCurrency.flag}{' '}
                   {currentCurrency.code}{' '}

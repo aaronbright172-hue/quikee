@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
+import Image from 'next/image';
 import { useCart } from '@/contexts/CartContext';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import productsData from '@/data/products.json';
@@ -73,8 +74,34 @@ export default function ProductPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Product Image */}
-          <div className="bg-neutral-100 rounded-lg aspect-square flex items-center justify-center">
-            <ShoppingCart className="w-24 h-24 text-neutral-300" />
+          <div className="flex flex-col gap-4">
+            <div className="relative bg-neutral-100 rounded-lg aspect-square flex items-center justify-center overflow-hidden">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                style={{ objectFit: 'contain' }}
+                className="p-4"
+              />
+            </div>
+            {product.images && product.images.length > 0 && (
+              <div className="grid grid-cols-4 gap-4">
+                {product.images.map((img, index) => (
+                  <div
+                    key={index}
+                    className="relative bg-neutral-100 rounded-lg aspect-square flex items-center justify-center overflow-hidden"
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} - ${index + 1}`}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      className="p-2"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Details */}

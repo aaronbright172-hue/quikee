@@ -58,11 +58,22 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
         (c) => c.code === userCurrencyCode
       );
 
-      if (foundCurrency) {
-        setCurrencyState(foundCurrency);
-        localStorage.setItem('currency', JSON.stringify(foundCurrency));
-      }
-    } catch (error) {
+            if (foundCurrency) {
+              setCurrencyState(foundCurrency);
+              localStorage.setItem('currency', JSON.stringify(foundCurrency));
+            } else {
+              // If the detected currency is not in our predefined list,
+              // create a new Currency object for it and use it.
+              const customCurrency: Currency = {
+                code: userCurrencyCode,
+                symbol: data.currency_symbol || userCurrencyCode, // Use symbol from API, or code if not available
+                name: data.currency_name || userCurrencyCode, // Use name from API, or code if not available
+                flag: '', // No flag available for unsupported currencies
+              };
+              setCurrencyState(customCurrency);
+              localStorage.setItem('currency', JSON.stringify(customCurrency));
+              console.log(`Detected unsupported currency (${userCurrencyCode}), using it for display.`);
+            }    } catch (error) {
       console.log('Could not detect currency, using default');
     }
   };

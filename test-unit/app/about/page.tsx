@@ -3,27 +3,58 @@ import React from 'react';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">About Us</h1>
-          <p className="text-lg text-neutral-600">Learn more about our mission and model.</p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-left mb-10">
+          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
+            ABOUT QuantumPoint: THE FUTURE OF MOTION
+          </h1>
         </div>
 
-        <div className="mt-12 prose prose-lg mx-auto text-neutral-800">
-          <p>
-            Welcome to 2FAST TECH. We are an agent company that partners with leading technology firms to bring you their test and evaluation products.
-          </p>
-          <p>
-            Our unique model allows us to offer premium, fully functional tech products at prices significantly lower than traditional retail. We believe in transparency and providing our customers with the best possible value.
-          </p>
-          <h2>Our Mission</h2>
-          <p>
-            Our mission is to make high-end technology accessible to everyone. We are committed to providing a transparent and trustworthy platform where customers can purchase quality products with confidence.
-          </p>
-          <h2>How It Works</h2>
-          <p>
-            We receive test and evaluation units directly from our technology partners. These products are real, working, and have nothing wrong with them. Because we don't purchase them through traditional retail channels, we can pass the savings directly on to you.
-          </p>
+        <div className="space-y-8">
+          <div>
+            <h3 className="font-bold text-neutral-900 mb-2">
+              OUR VISION: REVOLUTIONIZING YOUR JOURNEY
+            </h3>
+            <p className="text-neutral-800 leading-relaxed">
+              At QuantumPoint, we believe in a world where speed, efficiency, and innovation seamlessly blend with daily life. We're not just selling products; we're crafting experiences that transform your commute, electrify your adventures, and keep you connected with the pulse of technology. Our vision is to be at the forefront of the e-mobility and smart tech revolution.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-neutral-900 mb-2">
+              WHO WE ARE: PIONEERS OF PERFORMANCE
+            </h3>
+            <p className="text-neutral-800 leading-relaxed">
+              Born from a passion for cutting-edge engineering and a drive for superior performance, QuantumPoint is a collective of tech enthusiasts, cyclists, and innovators. We meticulously curate and develop a range of products, with our high-performance e-bikes leading the charge, complemented by essential tech accessories that integrate flawlessly into your dynamic lifestyle.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-neutral-900 mb-2">
+              WHAT DRIVES US: UNCOMPROMISING QUALITY & INNOVATION
+            </h3>
+            <p className="text-neutral-800 leading-relaxed">
+              Every item at QuantumPoint is a testament to our commitment to excellence. We rigorously select materials, implement advanced manufacturing processes, and perform stringent quality checks to ensure durability, reliability, and exhilarating performance. Innovation isn't just a buzzword for us; it's the core of every product we offer.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-neutral-900 mb-2">
+              OUR PRODUCT SPECTRUM: BEYOND E-BIKES
+            </h3>
+            <p className="text-neutral-800 leading-relaxed">
+              While our e-bikes redefine urban mobility and outdoor exploration, our range extends to smart devices, connectivity tools, and performance-enhancing gear. We equip you with the technology to go further, faster, and smarter, whether it's through our powerful electric rides or the gadgets that keep your world in sync.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-neutral-900 mb-2">
+              JOIN THE MOVEMENT: EXPERIENCE THE 2FAST DIFFERENCE
+            </h3>
+            <p className="text-neutral-800 leading-relaxed">
+              We invite you to explore a new dimension of speed, freedom, and technological prowess. At QuantumPoint, you're not just purchasing a product; you're investing in a future where every journey is an adventure and every piece of tech empowers you. Discover the difference that true innovation makes.
+            </p>
+          </div>
         </div>
       </div>
     </div>
