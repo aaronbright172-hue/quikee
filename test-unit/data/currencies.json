@@ -1,0 +1,79 @@
+{
+  "currencies": [
+    {
+      "code": "USD",
+      "symbol": "$",
+      "name": "US Dollar"
+    },
+    {
+      "code": "AUD",
+      "symbol": "A$",
+      "name": "Australian Dollar"
+    },
+    {
+      "code": "EUR",
+      "symbol": "€",
+      "name": "Euro"
+    },
+    {
+      "code": "GBP",
+      "symbol": "£",
+      "name": "British Pound"
+    },
+    {
+      "code": "CAD",
+      "symbol": "C$",
+      "name": "Canadian Dollar"
+    },
+    {
+      "code": "JPY",
+      "symbol": "¥",
+      "name": "Japanese Yen"
+    },
+    {
+      "code": "NGN",
+      "symbol": "₦",
+      "name": "Nigerian Naira"
+    },
+    {
+      "code": "INR",
+      "symbol": "₹",
+      "name": "Indian Rupee"
+    },
+    {
+      "code": "CNY",
+      "symbol": "¥",
+      "name": "Chinese Yuan"
+    },
+    {
+      "code": "CHF",
+      "symbol": "Fr",
+      "name": "Swiss Franc"
+    },
+    {
+      "code": "SEK",
+      "symbol": "kr",
+      "name": "Swedish Krona"
+    },
+    {
+      "code": "NZD",
+      "symbol": "NZ$",
+      "name": "New Zealand Dollar"
+    },
+    {
+      "code": "SGD",
+      "symbol": "S$",
+      "name": "Singapore Dollar"
+    },
+    {
+      "code": "HKD",
+      "symbol": "HK$",
+      "name": "Hong Kong Dollar"
+    },
+    {
+      "code": "ZAR",
+      "symbol": "R",
+      "name": "South African Rand"
+    }
+  ]
+}
