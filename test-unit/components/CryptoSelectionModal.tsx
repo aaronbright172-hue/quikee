@@ -153,6 +153,11 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
       let orderData;
       try {
         orderData = JSON.parse(responseText);
+        // If the server response is a JSON string that itself contains a stringified JSON,
+        // we need to parse it again to get the actual object.
+        if (typeof orderData === 'string') {
+          orderData = JSON.parse(orderData);
+        }
       } catch (e) {
         console.error('Failed to parse server response as JSON:', responseText);
         throw new Error('Server returned an invalid response.');

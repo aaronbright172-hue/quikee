@@ -1,6 +1,6 @@
 // test-unit/app/api/order/create/route.ts
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase'; // Import the Supabase client
+import { supabaseServiceRole } from '@/lib/supabase/server'; // Import the Supabase client with service role
 
 export async function POST(request: Request) {
   let body;
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServiceRole
       .from('orders')
       .insert({
         user_email: formData.email,
