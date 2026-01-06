@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, Lock, AlertCircle } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import Image from 'next/image';
+import { PaymentMethod } from '@/components/PaymentMethod';
+import { CryptoSelectionModal } from '@/components/CryptoSelectionModal';
 
 export default function CheckoutPage() {
   const { cart, cartTotal } = useCart();
@@ -21,6 +24,10 @@ export default function CheckoutPage() {
     country: 'United States',
   });
 
+  const [showCryptoSelectionModal, setShowCryptoSelectionModal] = useState(false);
+  const [formInteracted, setFormInteracted] = useState(false);
+  const contactFormRef = useRef<HTMLDivElement>(null);
+
   if (cart.length === 0) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -35,13 +42,16 @@ export default function CheckoutPage() {
     );
   }
 
+  const isFormValid = Object.values(formData).every(value => value.trim() !== '');
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <>
+      <div className="min-h-screen bg-neutral-50">
       {/* Header */}
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -57,7 +67,7 @@ export default function CheckoutPage() {
           {/* Checkout Form */}
           <div className="lg:col-span-3 space-y-8">
             {/* Contact */}
-            <div className="bg-white rounded-lg p-8 border border-neutral-200">
+            <div ref={contactFormRef} className="bg-white rounded-lg p-8 border border-neutral-200">
               <h2 className="text-2xl font-bold mb-6">Contact</h2>
               <input
                 type="email"
@@ -65,7 +75,7 @@ export default function CheckoutPage() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg mb-4 focus:outline-none focus:border-black"
+                className={`w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:border-black ${formInteracted && !formData.email ? 'border-red-500' : 'border-neutral-300'}`}
               />
 
             </div>
@@ -77,7 +87,7 @@ export default function CheckoutPage() {
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg mb-4 focus:outline-none focus:border-black"
+                className={`w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:border-black ${formInteracted && !formData.country ? 'border-red-500' : 'border-neutral-300'}`}
               >
                 <option>United States</option>
                 <option>Canada</option>
@@ -92,7 +102,7 @@ export default function CheckoutPage() {
                   placeholder="First name"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:border-black"
+                  className={`px-4 py-3 border rounded-lg focus:outline-none focus:border-black ${formInteracted && !formData.firstName ? 'border-red-500' : 'border-neutral-300'}`}
                 />
                 <input
                   type="text"
@@ -100,7 +110,7 @@ export default function CheckoutPage() {
                   placeholder="Last name"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:border-black"
+                  className={`px-4 py-3 border rounded-lg focus:outline-none focus:border-black ${formInteracted && !formData.lastName ? 'border-red-500' : 'border-neutral-300'}`}
                 />
               </div>
 
@@ -110,7 +120,16 @@ export default function CheckoutPage() {
                 placeholder="Address"
                 value={formData.address}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg mb-4 focus:outline-none focus:border-black"
+                className={`w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:border-black ${formInteracted && !formData.address ? 'border-red-500' : 'border-neutral-300'}`}
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className={`w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:border-black ${formInteracted && !formData.phone ? 'border-red-500' : 'border-neutral-300'}`}
               />
 
               <div className="grid sm:grid-cols-3 gap-4">
@@ -120,7 +139,7 @@ export default function CheckoutPage() {
                   placeholder="City"
                   value={formData.city}
                   onChange={handleInputChange}
-                  className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:border-black"
+                  className={`px-4 py-3 border rounded-lg focus:outline-none focus:border-black ${formInteracted && !formData.city ? 'border-red-500' : 'border-neutral-300'}`}
                 />
                 <input
                   type="text"
@@ -128,7 +147,7 @@ export default function CheckoutPage() {
                   placeholder="State"
                   value={formData.state}
                   onChange={handleInputChange}
-                  className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:border-black"
+                  className={`px-4 py-3 border rounded-lg focus:outline-none focus:border-black ${formInteracted && !formData.state ? 'border-red-500' : 'border-neutral-300'}`}
                 />
                 <input
                   type="text"
@@ -136,7 +155,7 @@ export default function CheckoutPage() {
                   placeholder="Postcode"
                   value={formData.postcode}
                   onChange={handleInputChange}
-                  className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:border-black"
+                  className={`px-4 py-3 border rounded-lg focus:outline-none focus:border-black ${formInteracted && !formData.postcode ? 'border-red-500' : 'border-neutral-300'}`}
                 />
               </div>
             </div>
@@ -196,9 +215,46 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Remove the paymentMethod state as it's no longer needed for selection */}
-            {/* Remove the setPaymentMethod state as it's no longer needed for selection */}
-
+            {/* Additional payment methods */}
+            <div className="bg-white rounded-lg p-8 border border-neutral-200 mt-8"> {/* Added mt-8 for spacing */}
+              <h2 className="text-2xl font-bold mb-6">Additional payment methods</h2>
+              <PaymentMethod
+                id="coingate"
+                title="Coingate"
+                logo="/img/coingate-logo.svg"
+                defaultOpen={true}
+              >
+                <div className="space-y-4 text-sm text-neutral-600">
+                  <p>
+                    You are about to pay using cryptocurrency. Due to its nature cryptocurrencies, tokens, and digital assets are irreversible, and their exchange rates are highly volatile and transitory. We can not be responsible for any risk including but not limited to exchange rate risk and market risk.
+                    <span className="font-semibold text-red-600"> Products purchased using cryptocurrencies, tokens or digital assets are not refundable.</span>
+                  </p>
+                  <p>
+                    Please note that crypto payments are not received instantly as they require multiple confirmations on the blockchain. Payment confirmation can take up to few hours but usually happens within 20 min.
+                  </p>
+                  <button
+                    className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                    onClick={() => {
+                      setFormInteracted(true);
+                      if (isFormValid) {
+                        setShowCryptoSelectionModal(true);
+                      } else {
+                        contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }}
+                  >
+                    Pay with Cryptocurrency
+                  </button>
+                  <div className="flex items-center gap-2 text-neutral-500">
+                    <Lock className="w-4 h-4" />
+                    <span>Encrypted and secure payments</span>
+                  </div>
+                  <p className="text-xs">
+                    By checking out you agree with our <Link href="/terms-conditions" className="underline">Terms of Service</Link> and confirm that you have read our <Link href="/privacy-policy" className="underline">Privacy Policy</Link>. You can cancel recurring payments at any time.
+                  </p>
+                </div>
+              </PaymentMethod>
+            </div>
           </div>
 
           {/* Order Summary */}
@@ -244,11 +300,7 @@ export default function CheckoutPage() {
                 <span>{formatPrice(cartTotal)}</span>
               </div>
 
-              {/* Checkout Button */}
-              <button className="w-full py-4 bg-black text-white font-semibold rounded-lg hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2">
-                <Lock className="w-5 h-5" />
-                Complete Purchase
-              </button>
+
 
               <p className="text-xs text-neutral-500 text-center mt-4">
                 Secure and encrypted payment
@@ -258,5 +310,15 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+
+    <CryptoSelectionModal
+      isOpen={showCryptoSelectionModal}
+      onClose={() => setShowCryptoSelectionModal(false)}
+      // onSelectCrypto prop is no longer used for direct navigation
+      cartTotal={cartTotal}
+      formData={formData} // Pass formData
+      cartDetails={cart} // Pass cart as cartDetails
+    />
+    </>
   );
 }

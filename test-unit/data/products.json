@@ -38,7 +38,7 @@
       "price": 500,
       "currency": "USD",
       "description": "Motor kit only — Battery sold separately",
-      "image": "/images/products/1500w-kit.jpg",
+      "image": "/tr",
       "images": [
         "/images/products/1500w-kit-1.jpg",
         "/images/products/1500w-kit-2.jpg"
@@ -56,19 +56,7 @@
       "variants": [
         {
           "name": "Wheel Size",
-          "options": ["26 INCH", "27.5 INCH", "29 INCH"]
-        },
-        {
-          "name": "Display",
-          "options": ["SW900", "UKC1"]
-        },
-        {
-          "name": "Dropout Size (mm)",
-          "options": ["135MM", "150MM"]
-        },
-        {
-          "name": "Drop Size (mm)",
-          "options": ["135MM", "150MM"]
+          "options": ["26 INCH", "27.5 INCH", "29 INCH", "35INCH"]
         }
       ]
     },
