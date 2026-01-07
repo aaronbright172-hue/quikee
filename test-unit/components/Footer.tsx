@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:items-end">
-          <p className="text-sm text-gray-500 mt-4">&copy; 2Fast Ebikes {new Date().getFullYear()} Powered by Gemini</p>
+          <p className="text-sm text-gray-500 mt-4">&copy; Quikee {new Date().getFullYear()} Powered by Gemini</p>
         </div>
       </div>
     </footer>

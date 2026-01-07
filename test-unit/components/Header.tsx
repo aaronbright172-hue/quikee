@@ -68,8 +68,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-2xl font-bold tracking-tight">
-              <span className={isAtTopAndHomePage ? 'text-white' : 'text-black'}>Quantum</span>
-              <span className={isAtTopAndHomePage ? 'text-white/80' : 'text-neutral-600'}>Point</span>
+              <span className={isAtTopAndHomePage ? 'text-white' : 'text-black'}>Quikee</span>
             </div>
           </Link>
 
