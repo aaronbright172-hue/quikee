@@ -101,7 +101,8 @@ export default function CryptoPaymentPage() {
 
       if (!response.ok) {
         const errData = await response.json();
-        throw new Error(errData.error || 'Failed to confirm payment.');
+        const errorMessage = errData.message || errData.error || JSON.stringify(errData);
+        throw new Error(errorMessage || 'Failed to confirm payment.');
       }
 
       const result = await response.json();
