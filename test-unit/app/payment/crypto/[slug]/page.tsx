@@ -101,8 +101,25 @@ export default function CryptoPaymentPage() {
 
       if (!response.ok) {
         const errData = await response.json();
-        const errorMessage = errData.message || errData.error || JSON.stringify(errData);
-        throw new Error(errorMessage || 'Failed to confirm payment.');
+        let errorMessage = 'Failed to confirm payment.'; // Default fallback
+
+        if (errData && typeof errData === 'object') {
+            if (errData.message) {
+                errorMessage = errData.message;
+            } else if (errData.error) {
+                errorMessage = errData.error;
+            } else {
+                // If no specific message or error field, try to stringify the whole object
+                try {
+                    errorMessage = JSON.stringify(errData, null, 2); // Pretty print for better readability
+                } catch (e) {
+                    errorMessage = 'Failed to confirm payment: Could not parse error details.';
+                }
+            }
+        } else if (errData) { // If errData exists but is not an object (e.g., a string)
+            errorMessage = String(errData);
+        }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
