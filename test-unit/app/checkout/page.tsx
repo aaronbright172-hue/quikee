@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import useLocalStorage from '@/hooks/use-local-storage';
 import Link from 'next/link';
 import { ChevronLeft, Lock, AlertCircle } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
@@ -12,7 +14,7 @@ import { CryptoSelectionModal } from '@/components/CryptoSelectionModal';
 export default function CheckoutPage() {
   const { cart, cartTotal } = useCart();
   const { formatPrice } = useCurrency();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useLocalStorage('checkout-form-data', {
     email: '',
     firstName: '',
     lastName: '',
@@ -27,6 +29,13 @@ export default function CheckoutPage() {
   const [showCryptoSelectionModal, setShowCryptoSelectionModal] = useState(false);
   const [formInteracted, setFormInteracted] = useState(false);
   const contactFormRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('showCryptoModal') === 'true') {
+      setShowCryptoSelectionModal(true);
+    }
+  }, [searchParams]);
 
   if (cart.length === 0) {
     return (

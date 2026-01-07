@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link'; // For any potential links in the future or for Terms/Privacy
-import { Clock, Copy, Check } from 'lucide-react'; // Import Check icon for copy success
+import { Clock, Copy, Check, ChevronLeft } from 'lucide-react'; // Import Check icon for copy success
 import { Button } from '@/components/ui/button'; // Assuming a Button component exists
 import { useCart } from '@/contexts/CartContext';
 
@@ -158,6 +158,9 @@ export default function CryptoPaymentPage() {
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md text-center">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
+          <Button variant="ghost" size="icon" onClick={() => router.push('/checkout?showCryptoModal=true')}>
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
           <h1 className="text-xl font-semibold">Pay for your order</h1>
           <div className="flex items-center gap-2 text-neutral-600">
             <Clock className="w-5 h-5" />
