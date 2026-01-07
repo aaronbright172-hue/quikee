@@ -11,7 +11,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Enum for cryptocurrency codes
-CREATE TYPE crypto_currency_code AS ENUM ('BTC', 'USDC', 'ETH', 'SOL', 'LTC', 'TRX', 'BNB');
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'crypto_currency_code') THEN
+        CREATE TYPE crypto_currency_code AS ENUM ('BTC', 'USDC', 'ETH', 'SOL', 'LTC', 'TRX', 'BNB');
+    END IF;
+END$$;
 
 -- Table: crypto_payment_settings
 CREATE TABLE IF NOT EXISTS public.crypto_payment_settings (

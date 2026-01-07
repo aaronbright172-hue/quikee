@@ -13,24 +13,26 @@ interface CryptoSetting {
   address: string;
   barcode_url: string | null;
   logo_url: string | null;
+  network_logo_url: string | null; // Added for network logo
   network: string;
   is_active: boolean;
   created_at: string;
   updated_at: string;
 }
 
-type CryptoCurrencyCode = 'BTC' | 'USDC' | 'ETH' | 'SOL' | 'LTC' | 'TRX' | 'BNB';
+type CryptoCurrencyCode = 'BTC' | 'USDC' | 'ETH' | 'SOL' | 'LTC' | 'TRX' | 'BNB' | 'USDT';
 
 interface CryptoFormState {
-  currency_code: CryptoCurrencyCode | ''; // Allow empty string for initial state
+  currency_code: CryptoCurrencyCode | '';
   address: string;
   barcode_url: string | null;
   logo_url: string | null;
+  network_logo_url: string | null; // Added for network logo
   network: string;
   is_active: boolean;
 }
 
-const CRYPTO_CURRENCIES = ['BTC', 'USDC', 'ETH', 'SOL', 'LTC', 'TRX', 'BNB'];
+const CRYPTO_CURRENCIES: CryptoCurrencyCode[] = ['BTC', 'USDC', 'ETH', 'SOL', 'LTC', 'TRX', 'BNB', 'USDT'];
 
 export default function AdminCryptoSettingsPage() {
   const supabase = createClient();
@@ -42,12 +44,14 @@ export default function AdminCryptoSettingsPage() {
     address: '',
     barcode_url: '',
     logo_url: '',
+    network_logo_url: '', // Initial state for network logo
     network: '',
     is_active: true,
   });
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [qrCodeFile, setQrCodeFile] = useState<File | null>(null); // State for QR code image file
-  const [logoFile, setLogoFile] = useState<File | null>(null);     // State for logo image file
+  const [qrCodeFile, setQrCodeFile] = useState<File | null>(null);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [networkLogoFile, setNetworkLogoFile] = useState<File | null>(null); // State for network logo file
 
   const fetchSettings = async () => {
     setLoading(true);
@@ -62,6 +66,7 @@ export default function AdminCryptoSettingsPage() {
         ...s,
         barcode_url: s.barcode_url || '',
         logo_url: s.logo_url || '',
+        network_logo_url: s.network_logo_url || '', // Sanitize network logo
       })) || [];
       setSettings(sanitizedData as CryptoSetting[]);
     } catch (error) {
@@ -83,6 +88,8 @@ export default function AdminCryptoSettingsPage() {
         setQrCodeFile(files[0]);
       } else if (name === 'logo_image' && files) {
         setLogoFile(files[0]);
+      } else if (name === 'network_logo_image' && files) {
+        setNetworkLogoFile(files[0]);
       }
     } else {
       setNewSetting((prev) => ({
@@ -95,30 +102,30 @@ export default function AdminCryptoSettingsPage() {
   const handleSelectChange = (value: string) => {
     setNewSetting((prev) => ({
       ...prev,
-      currency_code: value as CryptoCurrencyCode | '', // Type assertion
+      currency_code: value as CryptoCurrencyCode | '',
     }));
   };
 
-    const uploadFileToSupabaseStorage = async (file: File, folder: string): Promise<string | null> => {
-      if (!file) return null;
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${folder}/${crypto.randomUUID()}.${fileExt}`;
-      const { data, error: uploadError } = await supabase.storage
-        .from('crypto-images') // Assuming a bucket named 'crypto-images'
-        .upload(fileName, file);
+  const uploadFileToSupabaseStorage = async (file: File, folder: string): Promise<string | null> => {
+    if (!file) return null;
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${folder}/${crypto.randomUUID()}.${fileExt}`;
+    const { error: uploadError } = await supabase.storage
+      .from('crypto-images')
+      .upload(fileName, file);
 
-      if (uploadError) {
-        console.error(`Error uploading ${folder} file:`, uploadError);
-        setError(`Failed to upload ${folder} file: ${uploadError.message}`);
-        return null;
-      }
+    if (uploadError) {
+      console.error(`Error uploading ${folder} file:`, uploadError);
+      setError(`Failed to upload ${folder} file: ${uploadError.message}`);
+      return null;
+    }
 
-      const { data: publicUrlData } = supabase.storage
-        .from('crypto-images')
-        .getPublicUrl(fileName);
+    const { data: publicUrlData } = supabase.storage
+      .from('crypto-images')
+      .getPublicUrl(fileName);
 
-      return publicUrlData.publicUrl;
-    };
+    return publicUrlData.publicUrl;
+  };
 
   const handleAddSetting = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,15 +133,15 @@ export default function AdminCryptoSettingsPage() {
     
     const barcodeUrl = qrCodeFile ? await uploadFileToSupabaseStorage(qrCodeFile, 'qr-codes') : null;
     const logoUrl = logoFile ? await uploadFileToSupabaseStorage(logoFile, 'crypto-logos') : null;
+    const networkLogoUrl = networkLogoFile ? await uploadFileToSupabaseStorage(networkLogoFile, 'network-logos') : null;
 
-    if ((qrCodeFile && !barcodeUrl) || (logoFile && !logoUrl)) {
-      // An error occurred during file upload, and setError was already called in uploadFileToSupabaseStorage
+    if ((qrCodeFile && !barcodeUrl) || (logoFile && !logoUrl) || (networkLogoFile && !networkLogoUrl)) {
       return;
     }
 
     const { data, error } = await supabase
       .from('crypto_payment_settings')
-      .insert([{ ...newSetting, barcode_url: barcodeUrl, logo_url: logoUrl }])
+      .insert([{ ...newSetting, barcode_url: barcodeUrl, logo_url: logoUrl, network_logo_url: networkLogoUrl }])
       .select('*')
       .single();
 
@@ -148,11 +155,13 @@ export default function AdminCryptoSettingsPage() {
         address: '',
         barcode_url: '',
         logo_url: '',
+        network_logo_url: '',
         network: '',
         is_active: true,
       });
-      setQrCodeFile(null); // Reset file input
-      setLogoFile(null);   // Reset file input
+      setQrCodeFile(null);
+      setLogoFile(null);
+      setNetworkLogoFile(null);
     }
   };
 
@@ -163,11 +172,13 @@ export default function AdminCryptoSettingsPage() {
       address: setting.address || '',
       barcode_url: setting.barcode_url || '',
       logo_url: setting.logo_url || '',
+      network_logo_url: setting.network_logo_url || '',
       network: setting.network || '',
       is_active: setting.is_active,
     });
-    setQrCodeFile(null); // Clear selected file when starting edit
-    setLogoFile(null);   // Clear selected file when starting edit
+    setQrCodeFile(null);
+    setLogoFile(null);
+    setNetworkLogoFile(null);
   };
 
   const handleUpdateSetting = async (e: React.FormEvent) => {
@@ -177,15 +188,15 @@ export default function AdminCryptoSettingsPage() {
 
     const barcodeUrl = qrCodeFile ? await uploadFileToSupabaseStorage(qrCodeFile, 'qr-codes') : newSetting.barcode_url;
     const logoUrl = logoFile ? await uploadFileToSupabaseStorage(logoFile, 'crypto-logos') : newSetting.logo_url;
+    const networkLogoUrl = networkLogoFile ? await uploadFileToSupabaseStorage(networkLogoFile, 'network-logos') : newSetting.network_logo_url;
 
-    if ((qrCodeFile && !barcodeUrl) || (logoFile && !logoUrl)) {
-      // An error occurred during file upload
+    if ((qrCodeFile && !barcodeUrl) || (logoFile && !logoUrl) || (networkLogoFile && !networkLogoUrl)) {
       return;
     }
 
     const { data, error } = await supabase
       .from('crypto_payment_settings')
-      .update({ ...newSetting, barcode_url: barcodeUrl, logo_url: logoUrl })
+      .update({ ...newSetting, barcode_url: barcodeUrl, logo_url: logoUrl, network_logo_url: networkLogoUrl })
       .eq('id', editingId)
       .select('*')
       .single();
@@ -201,11 +212,13 @@ export default function AdminCryptoSettingsPage() {
         address: '',
         barcode_url: '',
         logo_url: '',
+        network_logo_url: '',
         network: '',
         is_active: true,
       });
-      setQrCodeFile(null); // Reset file input
-      setLogoFile(null);   // Reset file input
+      setQrCodeFile(null);
+      setLogoFile(null);
+      setNetworkLogoFile(null);
     }
   };
 
@@ -270,7 +283,6 @@ export default function AdminCryptoSettingsPage() {
             required
             className="w-full"
           />
-          {/* TODO: Clarify with user if "raw image" means file upload. For now, it's a URL. */}
           <div className="flex flex-col space-y-1">
             <label htmlFor="qr_code_image" className="text-sm font-medium text-gray-700">QR Code Image</label>
             <Input
@@ -299,9 +311,23 @@ export default function AdminCryptoSettingsPage() {
               <p className="text-sm text-neutral-500">Current Logo: <a href={newSetting.logo_url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View</a></p>
             )}
           </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="network_logo_image" className="text-sm font-medium text-gray-700">Network Logo</label>
+            <Input
+              id="network_logo_image"
+              name="network_logo_image"
+              type="file"
+              onChange={handleInputChange}
+              className="w-full"
+            />
+            {networkLogoFile && <p className="text-sm text-neutral-500">Selected: {networkLogoFile.name}</p>}
+            {editingId && newSetting.network_logo_url && !networkLogoFile && (
+              <p className="text-sm text-neutral-500">Current Network Logo: <a href={newSetting.network_logo_url} target="_blank" rel="noopener noreferrer" className="text-.blue-600 hover:underline">View</a></p>
+            )}
+          </div>
           <Input
             name="network"
-            placeholder="Network (e.g., ERC-20, Bitcoin)"
+            placeholder="Network (e.g., Tron, ERC-20)"
             value={newSetting.network}
             onChange={handleInputChange}
             required
@@ -330,9 +356,11 @@ export default function AdminCryptoSettingsPage() {
                   address: '',
                   barcode_url: '',
                   logo_url: '',
+                  network_logo_url: '',
                   network: '',
                   is_active: true,
                 });
+                setNetworkLogoFile(null);
               }}>
                 Cancel Edit
               </Button>
@@ -351,7 +379,16 @@ export default function AdminCryptoSettingsPage() {
             {settings.map((setting) => (
               <div key={setting.id} className="border p-4 rounded-lg flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  {setting.logo_url && <img src={setting.logo_url} alt={`${setting.currency_code} logo`} className="h-10 w-10 object-contain" />}
+                  <div className="relative">
+                    {setting.logo_url && <img src={setting.logo_url} alt={`${setting.currency_code} logo`} className="h-10 w-10 object-contain" />}
+                    {setting.network_logo_url && (
+                      <img
+                        src={setting.network_logo_url}
+                        alt={`${setting.network} logo`}
+                        className="absolute -bottom-1 -right-1 h-5 w-5 object-contain border-2 border-white rounded-full"
+                      />
+                    )}
+                  </div>
                   <div>
                     <p className="font-semibold text-lg">{setting.currency_code}</p>
                     <p className="text-sm text-neutral-600">Address: <span className="font-mono">{setting.address}</span></p>
