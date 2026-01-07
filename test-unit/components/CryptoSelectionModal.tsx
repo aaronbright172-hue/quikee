@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { X, Search } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-import { Input } from '@/components/ui/input';
+
 import {
   Dialog,
   DialogContent,
@@ -66,7 +66,6 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
   cartDetails,
 }) => {
   const supabase = createClient();
-  const [searchTerm, setSearchTerm] = useState('');
   const [dbCryptoDefinitions, setDbCryptoDefinitions] = useState<CryptoDefinition[]>([]);
   const [convertedCryptos, setConvertedCryptos] = useState<ConvertedCryptoOption[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -196,13 +195,6 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
     }
   };
 
-  const filteredCryptos = convertedCryptos.filter(
-    (crypto) =>
-      crypto.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      crypto.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      crypto.network.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <CustomDialogContent className="sm:max-w-[360px]">
@@ -212,17 +204,6 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
         </DialogHeader>
 
         <div className="p-6 pt-4 flex-grow overflow-y-auto">
-          <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="Search currency or network"
-              className="pl-9"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-
           {isLoading && (
             <div className="text-center text-neutral-500 pt-8">Loading...</div>
           )}
@@ -232,7 +213,7 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
 
           {!isLoading && !error && (
             <div className="space-y-2">
-              {filteredCryptos.map((crypto) => (
+              {convertedCryptos.map((crypto) => (
                 <div
                   key={crypto.id}
                   className="flex items-center p-3 rounded-lg cursor-pointer bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
@@ -265,7 +246,7 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
                   </div>
                 </div>
               ))}
-              {filteredCryptos.length === 0 && (
+              {convertedCryptos.length === 0 && (
                 <p className="text-center text-neutral-500 pt-8">No cryptocurrencies found.</p>
               )}
             </div>
