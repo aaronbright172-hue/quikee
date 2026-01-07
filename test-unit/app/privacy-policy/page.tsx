@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
           </h1>
           <p className="text-sm text-neutral-600 mb-4">Last Updated: August 4, 2025</p>
           <p className="text-neutral-800 leading-relaxed">
-            This Privacy Policy describes how QuantumPoint e-Bikes ("we", "us", "our") collects, uses, and protects your personal information when you visit our website (2fastebikes.com) or use our services. By using our site, you agree to the practices described here.
+            This Privacy Policy describes how Quikee e-Bikes ("we", "us", "our") collects, uses, and protects your personal information when you visit our website (2fastebikes.com) or use our services. By using our site, you agree to the practices described here.
           </p>
           <p className="text-neutral-800 leading-relaxed">
             We may update this policy from time to time by posting a new version on our website.

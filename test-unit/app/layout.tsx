@@ -11,7 +11,7 @@ import Footer from '@/components/Footer'; // Import Footer component
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'QuantumPoint - Agent Tech Company',
+  title: 'Quikee - Agent Tech Company',
   description: 'Premium tech products at unbeatable prices. We partner with leading tech companies to bring you test and evaluation units.',
   openGraph: {
     images: [
