@@ -30,49 +30,261 @@
     }
   ],
   "products": [
-    { "id": "trek-checkpoint-alr-3",
-  "name": "Trek Checkpoint ALR 3",
-  "slug": "trek-checkpoint-alr-3",
+    {
+      "id": "trek-checkpoint-alr-3",
+      "name": "Trek Checkpoint ALR 3",
+      "slug": "trek-checkpoint-alr-3",
+      "category": "e-bikes",
+      "price": 750,
+      "currency": "USD",
+      "description": "Aluminum gravel bike designed for bikepacking, touring, and mixed-terrain riding.",
+      "image": "/product-imgs/p-1/CheckpointALR3-26-49944-B-Primary.avif",
+      "images": [
+        "/product-imgs/p-1/CheckpointALR3-26-49944-B-Primary.avif",
+        "/product-imgs/p-1/CheckpointALR3-26-49944-B-Accessory1.avif",
+        "/product-imgs/p-1/CheckpointALR3-26-49944-B-Alt1.avif",
+        "/product-imgs/p-1/CheckpointALR3-26-49944-B-Alt3.avif"
+      ],
+      "specs": {
+        "frame": "300 Series Alpha Aluminum",
+        "fork": "Trek Checkpoint, full carbon",
+        "weight": "ML - 10.41 kg / 22.96 lbs",
+        "weightLimit": "125 kg",
+        "shifter": "Shimano CUES 10 Speed Right STU303010R",
+        "rearDerailleur": "Shimano CUES U6000 GS",
+        "bottomBracket": "Praxis, T47 threaded, internal bearing",
+        "cassette": "Shimano CUES LG300, LINKGLIDE, 11-48, 10 speed",
+        "chain": "Shimano LG500, 9/10/11 speed"
+      },
+      "variants": [
+        {
+          "name": "Size",
+          "options": [
+            "S",
+            "M",
+            "ML",
+            "L"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trek-marlin-5-2026",
+      "name": "Trek Marlin 5 2026 Mountain Bike",
+      "slug": "trek-marlin-5-2026",
+      "category": "e-bikes",
+      "price": 490,
+      "currency": "USD",
+      "description": "Entry-level mountain bike built for trail riding, commuting, and everyday versatility.",
+      "image": "/product-imgs/p-2/Marlin5-24-40773-A-Alt1.avif",
+      "images": ["/product-imgs/p-2/Marlin5-24-40773-A-Alt1.avif", "/product-imgs/p-2/Marlin5-24-40773-A-Alt3.avif"],
+      "specs": {
+        "frame": "Alpha Silver Aluminum, 35x5mm ThruSkew",
+        "fork": "SR Suntour XCT 30, coil spring",
+        "weight": "M - 15.10 kg / 33.29 lbs (with tubes)",
+        "weightLimit": "136 kg",
+        "shifter": "Shimano U4000, 9 speed",
+        "rearDerailleur": "Shimano CUES U4000",
+        "bottomBracket": "VP BC73, 73mm, threaded cartridge",
+        "cassette": "Shimano LINKGLIDE LG300, 11-46, 9 speed",
+        "chain": "Shimano LG500, 9/10/11 speed"
+      },
+      "variants": [
+        {
+          "name": "Size",
+          "options": [
+            "XXS",
+            "XS",
+            "S",
+            "M",
+            "ML",
+            "L"
+          ]
+        }
+      ]
+    },{
+  "id": "trek-procaliber-8-2026",
+  "name": "Trek Procaliber 8 2026 Mountain Bike",
+  "slug": "trek-procaliber-8-2026",
   "category": "e-bikes",
   "price": 750,
   "currency": "USD",
-  "description": "Aluminum gravel bike designed for bikepacking, touring, and mixed-terrain riding.",
-  "image": "/images/products/trek-checkpoint-alr-3.jpg",
-  "images": [],
+  "description": "Lightweight cross-country mountain bike built for speed, efficiency, and competitive trail riding.",
+  "image": "/product-imgs/p-3/Procaliber8-26-57370-A-Alt1.avif",
+  "images": ["/product-imgs/p-3/Procaliber8-26-57370-A-Alt1.avif", "/product-imgs/p-3/Procaliber8-26-57370-A-Alt3.avif", "/product-imgs/p-3/Procaliber8-26-57370-A-Alt4.avif"],
   "specs": {
-    "frame": "300 Series Alpha Aluminum",
-    "fork": "Trek Checkpoint, full carbon",
-    "weight": "ML - 10.41 kg / 22.96 lbs",
-    "weightLimit": "125 kg",
-    "shifter": "Shimano CUES 10 Speed Right STU303010R",
-    "rearDerailleur": "Shimano CUES U6000 GS",
-    "bottomBracket": "Praxis, T47 threaded, internal bearing",
-    "cassette": "Shimano CUES LG300, LINKGLIDE, 11-48, 10 speed",
-    "chain": "Shimano LG500, 9/10/11 speed"
+    "frame": "Alpha Platinum Aluminum, tapered head tube",
+    "fork": "RockShox Recon Gold RL",
+    "weight": "12.78 kg / 28.18 lbs",
+    "weightLimit": "136 kg",
+    "shifter": "Shimano SLX M7100, 12 speed",
+    "rearDerailleur": "Shimano XT M8100, long cage",
+    "cassette": "Shimano SLX M7100, 10-51T, 12 speed",
+    "chain": "Shimano SLX M7100, 12 speed"
   },
   "variants": [
     {
       "name": "Size",
-      "options": ["S", "M", "ML", "L"]
+      "options": ["S", "M", "ML", "XL"]
     }
-  ]},
+  ]
+},{
+  "id": "trek-marlin-4-2026",
+  "name": "Trek Marlin 4 2026 Mountain Bike",
+  "slug": "trek-marlin-4-2026",
+  "category": "e-bikes",
+  "price": 450,
+  "currency": "USD",
+  "description": "Entry-level mountain bike designed for trail riding, commuting, and everyday use.",
+  "image": "/product-imgs/p-4/Marlin4-26-57361-A-Alt1.avif",
+  "images": ["/product-imgs/p-4/Marlin4-26-57361-A-Portrait.avif"],
+  "specs": {
+    "frame": "Alpha Silver Aluminum, curved top tube",
+    "fork": "SR Suntour XCM 30, coil spring",
+    "weight": "M - 14.90 kg / 32.85 lbs",
+    "weightLimit": "136 kg",
+    "shifter": "Shimano M315, 8 speed",
+    "rearDerailleur": "Shimano ESSA U2000",
+    "bottomBracket": "Threaded cartridge",
+    "cassette": "Shimano HG300, 11-45, 8 speed",
+    "chain": "KMC Z8.3, 8 speed"
+  },
+  "variants": [
     {
-      "id": "ebike-headlight",
-      "name": "E-Bike Headlight",
-      "slug": "ebike-headlight",
-      "category": "accessories",
-      "price": 25,
-      "currency": "USD",
-      "description": "Super bright LED headlight for e-bikes.",
-      "image": "/images/products/ebike-headlight.jpg",
-      "images": [],
-      "specs": {
-        "brightness": "1000 Lumens",
-        "powerSource": "E-bike battery",
-        "material": "Aluminum Alloy"
-      },
-      "variants": []
+      "name": "Size",
+      "options": ["XXS", "XS", "S", "M", "ML", "L"]
     }
-    
+  ]
+},{
+  "id": "giant-propel-advanced-1-2026",
+  "name": "Giant Propel Advanced 1",
+  "slug": "giant-propel-advanced-1-2026",
+  "category": "e-bikes",
+  "price": 1650,
+  "currency": "USD",
+  "description": "High-performance aero road bike built for speed, efficiency, and racing.",
+  "image": "/product-imgs/p-5/MY26PropelAdvanced1_ColorAMeteoriteMist.jpg",
+  "images": ["/product-imgs/p-5/MY26PropelAdvanced1_ColorAMeteoriteMist.jpg","/product-imgs/p-5/MY26PropelAdvanced1_ColorAMeteoriteMist-Front.jpg"],
+  "specs": {
+    "frame": "Advanced-grade Composite",
+    "fork": "Advanced-grade Composite",
+    "shifter": "Shimano 105 Di2",
+    "frontDerailleur": "Shimano 105 Di2",
+    "rearDerailleur": "Shimano 105 Di2",
+    "bottomBracket": "Shimano, press fit",
+    "cassette": "Shimano 105, 12-speed, 11x34",
+    "chain": "KMC X12L-1"
+  },
+  "variants": [
+    {
+      "name": "Size",
+      "options": ["XS", "S", "M", "ML"]
+    }
+  ]
+},{
+  "id": "giant-xtc-slr-ltd-1-2026",
+  "name": "Giant XTC SLR LTD 1 2026",
+  "slug": "giant-xtc-slr-ltd-1-2026",
+  "category": "e-bikes",
+  "price": 750,
+  "currency": "USD",
+  "description": "Lightweight hardtail mountain bike built for cross-country speed and efficiency.",
+  "image": "/product-imgs/p-6/MY26XTCSLR291_ColorAAbyssBlack.jpg",
+  "images": ["/product-imgs/p-6/MY26XTCSLR291_ColorAAbyssBlack.jpg"],
+  "specs": {
+    "frame": "ALUXX SLR-grade Aluminum",
+    "fork": "Giant Crest 34 RRL",
+    "shifter": "Shimano SLX M7100, 1x12",
+    "frontDerailleur": "N/A",
+    "rearDerailleur": "Shimano SLX M7100",
+    "bottomBracket": "Shimano, press fit",
+    "cassette": "Shimano SLX, 10-51",
+    "chain": "KMC X-12"
+  },
+  "variants": [
+    {
+      "name": "Size",
+      "options": ["S", "M", "L"]
+    }
+  ]
+},{
+  "id": "liv-tempt-2-2026",
+  "name": "Liv Tempt 2 2026",
+  "slug": "liv-tempt-2-2026",
+  "category": "e-bikes",
+  "price": 750,
+  "currency": "USD",
+  "description": "Women's-specific hardtail mountain bike designed for confidence and comfort on trails.",
+  "image": "/product-imgs/p-7/MY25Tempt292_ColorAMarsDust-D2.jpg",
+  "images": [ "/product-imgs/p-7/MY25Tempt292_ColorAMarsDust-D2.jpg","/product-imgs/p-7/MY25Tempt292_ColorAMarsDust-D4.jpg","/product-imgs/p-7/MY25Tempt292_ColorAMarsDust-D7.jpg","/product-imgs/p-7/MY25Tempt292_ColorAMarsDust-Front.jpg","/product-imgs/p-7/MY25Tempt292_ColorAMarsDust.jpg"],
+  "specs": {
+    "frame": "ALUXX-grade aluminum, disc",
+    "fork": "Giant SXC32-3 RL Coil",
+    "shifter": "Microshift Advent 1x9, SL-M9295R",
+    "frontDerailleur": "N/A",
+    "rearDerailleur": "Microshift Advent RD-M6195M with clutch",
+    "bottomBracket": "Shimano, press fit",
+    "cassette": "cartridge",
+    "chain": "KMC X9"
+  },
+  "variants": [
+    {
+      "name": "Size",
+      "options": ["XS", "S", "L"]
+    }
+  ]
+},{
+  "id": "giant-stance-2",
+  "name": "Giant Stance 2",
+  "slug": "giant-stance-2",
+  "category": "e-bikes",
+  "price": 750,
+  "currency": "USD",
+  "description": "Full-suspension trail bike built for comfort, control, and all-day trail riding.",
+  "image": "/product-imgs/p-8/MY25Stance29_ColorAPanther1.jpg",
+  "images": ["/product-imgs/p-8/MY25Stance29_ColorAPanther1.jpg","/product-imgs/p-8/MY25Stance29_ColorBCopperCoin1.jpg"],
+  "specs": {
+    "frame": "ALUXX-grade aluminum",
+    "fork": "Giant STL 34 RCL",
+    "shifter": "Shimano CUES SL-6000, 1x10",
+    "frontDerailleur": "N/A",
+    "rearDerailleur": "Shimano CUES RD-U6000",
+    "bottomBracket": "Shimano, threaded",
+    "cassette": "Shimano CUES CS-LG300, 11x48",
+    "chain": "KMC X-11"
+  },
+  "variants": [
+    {
+      "name": "Size",
+      "options": ["S", "M", "L", "XL"]
+    }
+  ]
+},{
+  "id": "giant-escape-1-disc-2025",
+  "name": "Giant Escape 1 Disc 2025",
+  "slug": "giant-escape-1-disc-2025",
+  "category": "e-bikes",
+  "price": 750,
+  "currency": "USD",
+  "description": "Versatile flat-bar bike built for fitness riding, commuting, and city cruising.",
+  "image": "/product-imgs/p-9/MY25Escape1Disc_ColorAFrostSilver.jpg",
+  "images": ["/product-imgs/p-9/MY25Escape1Disc_ColorAFrostSilver.jpg"],
+  "specs": {
+    "frame": "ALUXX-grade aluminum",
+    "fork": "Advanced-grade composite",
+    "shifter": "Shimano CUES U6000, 10-speed",
+    "frontDerailleur": "N/A",
+    "rearDerailleur": "Shimano CUES RDU6020",
+    "bottomBracket": "Threaded",
+    "cassette": "Shimano CS-LG400, 11x48",
+    "chain": "KMC X-11"
+  },
+  "variants": [
+    {
+      "name": "Size",
+      "options": ["S", "M", "L"]
+    }
+  ]
+}
   ]
 }

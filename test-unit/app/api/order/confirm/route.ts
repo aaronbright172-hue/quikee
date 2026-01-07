@@ -1,6 +1,5 @@
 // test-unit/app/api/order/confirm/route.ts
 import { NextResponse } from 'next/server';
-import { NextResponse } from 'next/server';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
@@ -13,7 +12,7 @@ export async function POST(request: Request) {
     }
 
     // Update the order status in Supabase using the service role client
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
