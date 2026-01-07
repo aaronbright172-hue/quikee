@@ -16,6 +16,7 @@ export default function ProductPage() {
   const { formatPrice } = useCurrency();
   const [quantity, setQuantity] = useState(1);
   const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
+  const [mainImageSrc, setMainImageSrc] = useState(product.image);
 
   const product = productsData.products.find((p) => p.slug === slug);
   const category = product ? productsData.categories.find((c) => c.id === product.category) : null;
@@ -75,9 +76,9 @@ export default function ProductPage() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Product Image */}
           <div className="flex flex-col gap-4">
-            <div className="relative bg-neutral-100 rounded-lg aspect-square flex items-center justify-center overflow-hidden">
+            <div className="relative bg-white border border-neutral-200 rounded-lg aspect-square flex items-center justify-center overflow-hidden">
               <Image
-                src={product.image}
+                src={mainImageSrc}
                 alt={product.name}
                 fill
                 style={{ objectFit: 'contain' }}
@@ -89,7 +90,8 @@ export default function ProductPage() {
                 {product.images.map((img, index) => (
                   <div
                     key={index}
-                    className="relative bg-neutral-100 rounded-lg aspect-square flex items-center justify-center overflow-hidden"
+                    className="relative bg-white border border-neutral-200 rounded-lg aspect-square flex items-center justify-center overflow-hidden cursor-pointer"
+                    onClick={() => setMainImageSrc(img)}
                   >
                     <Image
                       src={img}
