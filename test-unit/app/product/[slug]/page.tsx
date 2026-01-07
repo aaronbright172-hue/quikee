@@ -44,7 +44,7 @@ export default function ProductPage() {
       {
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: product.downPayment || product.price,
         image: product.image,
         selectedVariants,
         variantText,
@@ -115,7 +115,12 @@ export default function ProductPage() {
             {/* Price */}
             <div className="mb-8">
               <p className="text-3xl font-bold text-neutral-900">
-                {formatPrice(product.price)}
+                {formatPrice(product.downPayment || product.price)}
+                {product.downPayment && product.price && product.downPayment !== product.price && (
+                  <span className="ml-3 text-xl text-neutral-500 line-through">
+                    {formatPrice(product.price)}
+                  </span>
+                )}
               </p>
               <p className="text-sm text-neutral-600 mt-2">
                 Shipping calculated at checkout

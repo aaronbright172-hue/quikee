@@ -90,7 +90,7 @@ export default function CategoryPage() {
                           {
                             id: product.id,
                             name: product.name,
-                            price: product.price,
+                            price: product.downPayment || product.price,
                             image: product.image,
                           },
                           1
@@ -107,7 +107,9 @@ export default function CategoryPage() {
                   {product.name}
                 </h3>
                 <p className="text-neutral-600 text-sm mb-3">{product.description}</p>
-                <p className="font-bold text-lg">{formatPrice(product.price)}</p>
+                <p className="font-bold text-lg">
+                  {formatPrice(product.downPayment || product.price)}
+                </p>
               </Link>
             ))}
           </div>

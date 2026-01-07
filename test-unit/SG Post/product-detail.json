@@ -1,0 +1,194 @@
+[
+  {
+    "productName": "Trek checkpoint ALR 3",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "300 Series Alpha Aluminum",
+      "fork": "Trek Checkpoint, full carbon",
+      "weight": "ML - 10.41 kg / 22.96 lbs",
+      "weightLimit": "125 kg",
+      "shifter": "Shimano CUES 10 Speed Right STU303010R",
+      "rearDerailleur": "Shimano CUES U6000 GS",
+      "bottomBracket": "Praxis, T47 threaded, internal bearing",
+      "cassette": "Shimano CUES LG300, LINKGLIDE, 11-48, 10 speed",
+      "Chain": "Shimano LG500, 9/10/11 speed"
+    },
+    "size": ["S", "M", "ML", "L"],
+    "variants": [],
+    "link": "https://www.trekbikes.com/us/en_US/bikes/bikepacking-touring-bikes/checkpoint/checkpoint-alr/f/F224-2/checkpoint-alr-3-gen-3/49944/5332753"
+  },
+  {
+    "productName": "New Trek Marlin 5 2026 Mountain Bike",
+    "price": 490,
+    "downPayment": 250,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "Alpha Silver Aluminum, 35x5mm ThruSkew",
+      "fork": "SR Suntour XCT 30, coil spring",
+      "weight": "M - 15.10 kg / 33.29 lbs (with tubes)",
+      "weightLimit": "136 kg",
+      "shifter": "Shimano U4000, 9 speed",
+      "rearDerailleur": "Shimano CUES U4000",
+      "bottomBracket": "VP BC73, 73mm, threaded cartridge",
+      "cassette": "Shimano LINKGLIDE LG300, 11-46, 9 speed",
+      "Chain": "Shimano LG500, 9/10/11 speed"
+    },
+    "size": ["XXS", "XS", "S", "M", "ML", "L"],
+    "variants": [],
+    "link": "https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/cross-country-mountain-bikes/marlin/f/F321/marlin-5-gen-3/40773/5292506/"
+  },
+  {
+    "productName": "Trek Procaliber 8 2026 Mountain Bike",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "Alpha Platinum Aluminum, tapered head tube",
+      "fork": "RockShox Recon Gold RL",
+      "weight": "12.78 kg / 28.18 lbs",
+      "weightLimit": "136 kg",
+      "shifter": "Shimano SLX M7100, 12 speed",
+      "rearDerailleur": "Shimano XT M8100, long cage",
+      "cassette": "Shimano SLX M7100, 10-51T, 12 spee",
+      "Chain": "Shimano SLX M7100, 12 speed"
+    },
+    "size": ["S", "M", "ML", "XL"],
+    "variants": [],
+    "link": "https://www.trekbikes.com/us/en_US/pre-owned-bikes/pre-owned-mountain-bikes/procaliber-8--2026-medium/p/81766/"
+  },
+  {
+    "productName": "New Trek Marlin 4 2026 Mountain Bike",
+    "price": 450,
+    "downPayment": 250,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "Alpha Silver Aluminum, curved top tube",
+      "fork": "SR Suntour XCM 30, coil spring",
+      "weight": "M - 14.90 kg / 32.85 lbs",
+      "weightLimit": "136 kg",
+      "shifter": "Shimano M315, 8 speed",
+      "rearDerailleur": "Shimano ESSA U2000",
+      "bottomBracket": "Threaded cartridge",
+      "cassette": "Shimano HG300, 11-45, 8 speed",
+      "Chain": "KMC Z8.3, 8 speed"
+    },
+    "size": ["XXS", "XS", "S", "M", "ML", "L"],
+    "variants": [],
+    "link": "https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/cross-country-mountain-bikes/marlin/f/F321/marlin-4-gen-3/57361/5336955"
+  },
+  {
+    "productName": "GIANT PROPEL ADVANCED 1",
+    "price": 1650,
+    "downPayment": 620,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "Advanced-grade Composite",
+      "fork": "Advanced-grade Composite",
+      "shifter": "Shimano 105 Di2",
+      "frontDerailleur": "Shimano 105 Di2",
+      "rearDerailleur": "Shimano 105 Di2",
+      "bottomBracket": "Shimano, press fit",
+      "cassette": "Shimano 105, 12-speed, 11x34",
+      "Chain": "KMC X12L-1"
+    },
+    "size": ["XS", "S", "M", "ML"],
+    "variants": [],
+    "link": "https://www.giant-bicycles.com/us/propel-advanced-1-2026"
+  },
+  {
+    "productName": "2026 Giant XTC SLR LTD 1",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "ALUXX SLR-grade Aluminum",
+      "fork": "Giant Crest 34 RRL",
+      "shifter": "Shimano SLX M-7100, 1x12",
+      "frontDerailleur": "N/A",
+      "rearDerailleur": "Shimano SLX M7100",
+      "bottomBracket": "Shimano, press fit",
+      "cassette": "Shimano SLX, 10x51",
+      "Chain": "KMC X-12"
+    },
+    "size": ["S", "M", "L"],
+    "variants": [],
+    "link": "https://www.giant-bicycles.com/gb/xtc-slr-29-1-2026"
+  },
+  {
+    "productName": "2026 Liv Tempt 2",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "ALUXX-grade aluminum, disc",
+      "fork": "Giant SXC32-3 RL Coil",
+      "shifter": "Microshift, Advent 1x9, SL-M9295R",
+      "frontDerailleur": "N/A",
+      "rearDerailleur": "Microshift, Advent 1x9, RD-M6195M with clutch",
+      "bottomBracket": "Shimano, press fit",
+      "cassette": "cartridge",
+      "Chain": "KMC X9"
+    },
+    "size": ["XS", "S", "L"],
+    "variants": [],
+    "link": "https://www.liv-cycling.com/us/tempt-2"
+  },
+  {
+    "productName": "Giant Stance 2",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "ALUXX-grade aluminum",
+      "fork": "Giant STL 34 RCL",
+      "shifter": "Shimano CUES SL-6000, 1x10",
+      "frontDerailleur": "N/A",
+      "rearDerailleur": "Shimano CUES RD-U6000",
+      "bottomBracket": "Shimano, threaded",
+      "cassette": "Shimano CUES, CS-LG300, 11x48",
+      "Chain": "KMC X-11"
+    },
+    "size": ["S", "M", "L", "XL"],
+    "variants": [],
+    "link": "https://www.giant-bicycles.com/ca/stance"
+  },
+  {
+    "productName": "2025 Giant Escape 1 Disc",
+    "price": 750,
+    "downPayment": 350,
+    "description": "",
+    "primaryImage": "",
+    "images": [],
+    "specs": {
+      "frame": "ALUXX-grade aluminum",
+      "fork": "Advanced-grade composite",
+      "shifter": "Shimano CUES U6000, 10-speed",
+      "frontDerailleur": "N/A",
+      "rearDerailleur": "Shimano CUES RDU6020",
+      "bottomBracket": "threaded",
+      "cassette": "Shimano CS-LG400, 11x48",
+      "Chain": "KMC X-11"
+    },
+    "size": ["S", "M", "L"],
+    "variants": [],
+    "link": "https://www.giant-bicycles.com/ca/escape-disc-1"
+  }
+]
