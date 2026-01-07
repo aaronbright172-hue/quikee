@@ -1,6 +1,8 @@
 // test-unit/app/api/order/confirm/route.ts
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase'; // Import the Supabase client
+import { NextResponse } from 'next/server';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 export async function POST(request: Request) {
   try {
@@ -10,38 +12,53 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'orderId is required' }, { status: 400 });
     }
 
-    // Update the order status in Supabase
+    // Update the order status in Supabase using the service role client
+    const cookieStore = cookies();
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value
+          },
+          set(name: string, value: string, options: CookieOptions) {
+            cookieStore.set({ name, value, ...options })
+          },
+          remove(name: string, options: CookieOptions) {
+            cookieStore.set({ name, value: '', ...options })
+          },
+        },
+      }
+    );
     const { data, error } = await supabase
       .from('orders')
-      .update({ payment_status: 'paid' }) // Set status to 'paid' or 'confirmed'
+      .update({ payment_status: 'paid' }) // Set status to 'paid'
       .eq('id', orderId)
-      .select('user_email, user_first_name, cart_details, original_fiat_amount, selected_crypto_code, converted_crypto_amount') // Select relevant data for email
+      .select('user_email, user_first_name, cart_details, original_fiat_amount, selected_crypto_code, converted_crypto_amount') // Select data for email
       .single();
 
     if (error) {
       console.error('Supabase error confirming order:', error);
-      return NextResponse.json({ error: 'Failed to confirm order' }, { status: 500 });
+      // Provide a more specific error message for easier debugging
+      return NextResponse.json(
+        { error: `Supabase error: ${error.message}` },
+        { status: 500 }
+      );
     }
 
     if (!data) {
-        return NextResponse.json({ error: 'Order not found or already confirmed' }, { status: 404 });
+        return NextResponse.json({ error: 'Order not found or an update was not required' }, { status: 404 });
     }
 
     // TODO: Implement email sending logic here
-    // Example: sendOrderConfirmationEmail(data);
-    console.log('Order confirmed successfully:', data);
-    console.log('Email to be sent to:', data.user_email);
-    console.log('Order details for email:', {
-        customer: `${data.user_first_name}`,
-        cart: data.cart_details,
-        amount: `${data.original_fiat_amount} USD`,
-        cryptoPaid: `${data.converted_crypto_amount} ${data.selected_crypto_code}`
-    });
-
+    console.log('Order confirmed successfully for:', data.user_email);
 
     return NextResponse.json({ message: 'Order confirmed successfully' });
   } catch (error) {
     console.error('API Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    // Handle potential JSON parsing errors or other unexpected issues
+    const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+    return NextResponse.json({ error: 'Internal Server Error', details: errorMessage }, { status: 500 });
   }
 }

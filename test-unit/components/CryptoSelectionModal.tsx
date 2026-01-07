@@ -6,13 +6,14 @@ import Link from 'next/link';
 import { X, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation'; // Import useRouter
 
+import { Input } from '@/components/ui/input';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+import { createClient } from '@/lib/supabase/client';
 
 // Extend the DialogContent to have a fixed height and scrollable body
 const CustomDialogContent = React.forwardRef<
@@ -30,10 +31,10 @@ const CustomDialogContent = React.forwardRef<
 CustomDialogContent.displayName = 'CustomDialogContent';
 
 interface CryptoDefinition {
-  id: string;
-  name: string;
-  symbol: string;
-  logo: string;
+  id: string; // Database ID
+  name: string; // From currency_code for now
+  symbol: string; // From currency_code
+  logo: string | null; // From logo_url
 }
 
 interface ConvertedCryptoOption extends CryptoDefinition {
@@ -41,21 +42,11 @@ interface ConvertedCryptoOption extends CryptoDefinition {
   exchangeRate: number;
 }
 
-// Static definitions of cryptocurrencies, without exchange rates
-const cryptoDefinitions: CryptoDefinition[] = [
-  { id: 'usdc', name: 'USD Coin', symbol: 'USDC', logo: '/img/usdc.svg' },
-  { id: 'btc', name: 'Bitcoin', symbol: 'BTC', logo: '/img/btc.svg' },
-  { id: 'ltc', name: 'Litecoin', symbol: 'LTC', logo: '/img/ltc.svg' },
-  { id: 'eth', name: 'Ethereum', symbol: 'ETH', logo: '/img/eth.svg' },
-  { id: 'trx', name: 'TRON', symbol: 'TRX', logo: '/img/trx.svg' },
-  { id: 'sol', name: 'Solana', symbol: 'SOL', logo: '/img/sol.svg' },
-  { id: 'bnb', name: 'Binance Coin', symbol: 'BNB', logo: '/img/bnb.svg' },
-];
+// Remove the static cryptoDefinitions array
 
 interface CryptoSelectionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  // onSelectCrypto: (cryptoCode: string) => void; // No longer needed as a prop
   cartTotal: number; // Total amount in USD to be converted
   formData: any; // Add formData from checkout form
   cartDetails: any; // Add cart details from cart context
@@ -64,19 +55,53 @@ interface CryptoSelectionModalProps {
 export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
   isOpen,
   onClose,
-  // onSelectCrypto, // No longer needed as a prop
   cartTotal,
   formData,
   cartDetails,
 }) => {
+  const supabase = createClient(); // Initialize Supabase client
   const [searchTerm, setSearchTerm] = useState('');
+  const [dbCryptoDefinitions, setDbCryptoDefinitions] = useState<CryptoDefinition[]>([]); // State for fetched definitions
   const [convertedCryptos, setConvertedCryptos] = useState<ConvertedCryptoOption[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter(); // Initialize router
 
+  // New useEffect to fetch crypto definitions from DB
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const fetchCryptoDefinitions = async () => {
+      setIsLoading(true);
+      setError(null);
+      const { data, error: dbError } = await supabase
+        .from('crypto_payment_settings')
+        .select('id, currency_code, logo_url')
+        .eq('is_active', true)
+        .order('currency_code', { ascending: true });
+
+      if (dbError) {
+        console.error('Error fetching crypto definitions from DB:', dbError);
+        setError(`Failed to load cryptocurrency options: ${dbError.message}`);
+        setIsLoading(false);
+        return;
+      }
+
+      const definitions = data.map(item => ({
+        id: item.id,
+        name: item.currency_code, // Use currency_code as name for now
+        symbol: item.currency_code,
+        logo: item.logo_url,
+      }));
+      setDbCryptoDefinitions(definitions);
+      setIsLoading(false);
+    };
+
+    fetchCryptoDefinitions();
+  }, [isOpen, supabase]); // Re-fetch when modal opens or supabase client changes
+
   const fetchConvertedAmounts = useCallback(async () => {
-    if (!isOpen || cartTotal <= 0) {
+    if (!isOpen || cartTotal <= 0 || dbCryptoDefinitions.length === 0) { // Depend on dbCryptoDefinitions
       setConvertedCryptos([]);
       return;
     }
@@ -85,7 +110,7 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
     setError(null);
     const fetchedCryptos: ConvertedCryptoOption[] = [];
 
-    for (const cryptoDef of cryptoDefinitions) {
+    for (const cryptoDef of dbCryptoDefinitions) { // Iterate over fetched definitions
       try {
         const response = await fetch('/api/crypto/convert', {
           method: 'POST',
@@ -109,12 +134,11 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
       } catch (err) {
         console.error(`Error fetching rate for ${cryptoDef.symbol}:`, err);
         setError(`Failed to load some cryptocurrency rates. Please try again.`);
-        // Optionally, push cryptoDef without convertedAmount or mark as error
       }
     }
     setConvertedCryptos(fetchedCryptos);
     setIsLoading(false);
-  }, [isOpen, cartTotal]);
+  }, [isOpen, cartTotal, dbCryptoDefinitions]); // Add dbCryptoDefinitions to dependency array
 
   useEffect(() => {
     fetchConvertedAmounts();
@@ -237,7 +261,13 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
                   onClick={() => handleSelectCryptoAndNavigate(crypto)}
                 >
                   <div className="flex items-center gap-3">
-                    <Image src={crypto.logo} alt={crypto.name} width={24} height={24} />
+                    {crypto.logo ? (
+                      <Image src={crypto.logo} alt={crypto.name} width={24} height={24} />
+                    ) : (
+                      <div className="w-6 h-6 bg-neutral-200 rounded-full flex items-center justify-center text-xs font-semibold text-neutral-600">
+                        {crypto.symbol.substring(0, 1)}
+                      </div>
+                    )}
                     <div>
                       <p className="font-medium">{crypto.name}</p>
                       <p className="text-sm text-neutral-500">{crypto.symbol}</p>

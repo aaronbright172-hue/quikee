@@ -15,6 +15,7 @@ Open `test-unit/.env.local` and add the following lines. Replace `YOUR_SUPABASE_
 ```
 NEXT_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_PROJECT_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY=YOUR_SUPABASE_SERVICE_ROLE_KEY
 ```
 
 *   **`NEXT_PUBLIC_` Prefix:** This prefix is essential for Next.js to make these variables accessible on both the client-side and server-side. This is required for initializing the Supabase client in our frontend components.

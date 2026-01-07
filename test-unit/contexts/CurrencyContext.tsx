@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import currenciesData from '@/data/currencies.json';
 
+import { toast } from 'sonner';
+
 interface Currency {
   code: string;
   symbol: string;
@@ -27,11 +29,20 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        const response = await fetch('https://api.frankfurter.app/latest?from=USD');
+        const response = await fetch('/api/currency-rates');
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          console.error(`Error fetching exchange rates. Status: ${response.status}`, {
+            statusText: response.statusText,
+            response: errorData,
+          });
+          throw new Error(`Failed to fetch rates with status: ${response.status}`);
+        }
         const data = await response.json();
         setRates(data.rates);
       } catch (error) {
         console.error('Could not fetch exchange rates:', error);
+        toast.error('Failed to load currency rates. Prices are in USD.');
       }
     };
 
@@ -50,7 +61,15 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   const detectUserCurrency = async () => {
     try {
-      const response = await fetch('https://ipapi.co/json/');
+      const response = await fetch('/api/ip-currency');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error(`Error fetching user currency. Status: ${response.status}`, {
+          statusText: response.statusText,
+          response: errorData,
+        });
+        throw new Error(`Failed to fetch user currency with status: ${response.status}`);
+      }
       const data = await response.json();
       const userCurrencyCode = data.currency;
 
@@ -75,6 +94,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
               console.log(`Detected unsupported currency (${userCurrencyCode}), using it for display.`);
             }    } catch (error) {
       console.log('Could not detect currency, using default');
+      toast.error('Could not detect your currency. Defaulting to USD.');
     }
   };
 

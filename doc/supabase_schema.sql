@@ -10,13 +10,16 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Enum for cryptocurrency codes
+CREATE TYPE crypto_currency_code AS ENUM ('BTC', 'USDC', 'ETH', 'SOL', 'LTC', 'TRX', 'BNB');
 
 -- Table: crypto_payment_settings
 CREATE TABLE IF NOT EXISTS public.crypto_payment_settings (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    currency_code text NOT NULL UNIQUE,
+    currency_code crypto_currency_code NOT NULL UNIQUE,
     address text NOT NULL,
-    barcode_url text NOT NULL, -- URL to barcode image or base64 encoded
+    barcode_url text, -- Made nullable to accommodate file uploads
+    logo_url text,    -- Added for cryptocurrency logo URL
     network text NOT NULL,
     is_active boolean NOT NULL DEFAULT TRUE,
     created_at timestamp with time zone NOT NULL DEFAULT now(),
@@ -58,7 +61,7 @@ CREATE TABLE IF NOT EXISTS public.orders (
     delivery_country text,
     cart_details jsonb NOT NULL, -- Store cart items as JSON
     original_fiat_amount numeric NOT NULL,
-    selected_crypto_code text NOT NULL,
+    selected_crypto_code crypto_currency_code NOT NULL,
     converted_crypto_amount numeric NOT NULL,
     exchange_rate_at_time_of_payment numeric NOT NULL,
     payment_status text NOT NULL DEFAULT 'pending', -- e.g., 'pending', 'paid', 'expired', 'confirmed'

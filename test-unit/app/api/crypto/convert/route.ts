@@ -16,17 +16,16 @@ export async function POST(request: Request) {
     // In a real application, you would fetch real-time data.
     // For demonstration, we'll use hardcoded mock rates.
     const mockExchangeRates: { [key: string]: number } = {
-      usdc: 1.00, // 1 USDC = 1 USD
-      btc: 35000.00, // 1 BTC = 35000 USD (example)
-      ltc: 70.00,    // 1 LTC = 70 USD (example)
-      eth: 2000.00,  // 1 ETH = 2000 USD (example)
-      trx: 0.08,     // 1 TRX = 0.08 USD (example)
-      sol: 50.00,    // 1 SOL = 50 USD (example)
-      bnb: 300.00,   // 1 BNB = 300 USD (example)
+      USDC: 1.00, // 1 USDC = 1 USD
+      BTC: 35000.00, // 1 BTC = 35000 USD (example)
+      LTC: 70.00,    // 1 LTC = 70 USD (example)
+      ETH: 2000.00,  // 1 ETH = 2000 USD (example)
+      TRX: 0.08,     // 1 TRX = 0.08 USD (example)
+      SOL: 50.00,    // 1 SOL = 50 USD (example)
+      BNB: 300.00,   // 1 BNB = 300 USD (example)
     };
 
-    const cryptoCodeLower = targetCryptoCode.toLowerCase();
-    const exchangeRate = mockExchangeRates[cryptoCodeLower];
+    const exchangeRate = mockExchangeRates[targetCryptoCode];
 
     if (!exchangeRate) {
       return NextResponse.json({ error: `Exchange rate for ${targetCryptoCode} not found` }, { status: 404 });

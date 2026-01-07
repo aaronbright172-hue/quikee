@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import { CartProvider } from '@/contexts/CartContext';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
 import Header from '@/components/Header';
+import { Toaster } from '@/components/ui/sonner';
 import CartSlideIn from '@/components/CartSlideIn';
 import Footer from '@/components/Footer'; // Import Footer component
 
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <CurrencyProvider>
+          <Toaster />
           <CartProvider>
             <Header />
             <main>{children}</main>

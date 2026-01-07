@@ -6,11 +6,13 @@ import Image from 'next/image';
 import Link from 'next/link'; // For any potential links in the future or for Terms/Privacy
 import { Clock, Copy, Check } from 'lucide-react'; // Import Check icon for copy success
 import { Button } from '@/components/ui/button'; // Assuming a Button component exists
+import { useCart } from '@/contexts/CartContext';
 
 export default function CryptoPaymentPage() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { clearCart } = useCart();
 
   const cryptoCode = params.slug as string;
   const orderId = searchParams.get('orderId'); // Get orderId from search params
@@ -124,6 +126,7 @@ export default function CryptoPaymentPage() {
 
       const result = await response.json();
       console.log('Payment confirmation successful:', result.message);
+      clearCart(); // Clear the cart after successful payment confirmation
       router.push(`/order-confirmation?orderId=${orderId}`); // Redirect to a confirmation page
     } catch (err: any) {
       console.error('Error confirming payment:', err);

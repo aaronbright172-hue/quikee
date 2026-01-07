@@ -1,4 +1,5 @@
-import { supabase } from '@/lib/supabase';
+'use client';
+
 import {
   Table,
   TableBody,
@@ -7,20 +8,51 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { OrderDetailsModal } from '@/components/OrderDetailsModal';
+import { useState, useEffect } from 'react';
+import { Eye } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-export const revalidate = 0; // Force dynamic rendering, re-fetch on every request
+import { Order } from '@/lib/types';
 
-export default async function AdminOrdersPage() {
-  const { data: orders, error } = await supabase
-    .from('orders')
-    .select('*')
-    .order('created_at', { ascending: false });
+export default function AdminOrdersPage() {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch('/api/admin/orders');
+        if (!response.ok) {
+          throw new Error('Failed to fetch orders');
+        }
+        const data: Order[] = await response.json();
+        setOrders(data);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : String(error));
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  const handleViewOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedOrder(null);
+  };
 
   if (error) {
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold mb-8">Admin: Orders</h1>
-        <p className="text-red-500">Error fetching orders: {error.message}</p>
+        <p className="text-red-500">Error fetching orders: {error}</p>
       </div>
     );
   }
@@ -40,9 +72,9 @@ export default async function AdminOrdersPage() {
                 <TableHead>Customer</TableHead>
                 <TableHead>Amount (Fiat)</TableHead>
                 <TableHead>Amount (Crypto)</TableHead>
-                <TableHead>Payment Address</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Date</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -54,7 +86,6 @@ export default async function AdminOrdersPage() {
                   </TableCell>
                   <TableCell>${order.original_fiat_amount?.toFixed(2)}</TableCell>
                   <TableCell>{order.converted_crypto_amount} {order.selected_crypto_code}</TableCell>
-                  <TableCell className="font-mono text-xs">{order.payment_address}</TableCell>
                   <TableCell>
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-semibold ${
@@ -67,12 +98,23 @@ export default async function AdminOrdersPage() {
                     </span>
                   </TableCell>
                   <TableCell>{new Date(order.created_at).toLocaleString()}</TableCell>
+                  <TableCell>
+                    <Button variant="ghost" size="icon" onClick={() => handleViewOrder(order)}>
+                      <Eye className="h-5 w-5" />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         )}
       </div>
+      <OrderDetailsModal
+        order={selectedOrder}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }
+

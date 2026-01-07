@@ -30,195 +30,32 @@
     }
   ],
   "products": [
+    { "id": "trek-checkpoint-alr-3",
+  "name": "Trek Checkpoint ALR 3",
+  "slug": "trek-checkpoint-alr-3",
+  "category": "e-bikes",
+  "price": 750,
+  "currency": "USD",
+  "description": "Aluminum gravel bike designed for bikepacking, touring, and mixed-terrain riding.",
+  "image": "/images/products/trek-checkpoint-alr-3.jpg",
+  "images": [],
+  "specs": {
+    "frame": "300 Series Alpha Aluminum",
+    "fork": "Trek Checkpoint, full carbon",
+    "weight": "ML - 10.41 kg / 22.96 lbs",
+    "weightLimit": "125 kg",
+    "shifter": "Shimano CUES 10 Speed Right STU303010R",
+    "rearDerailleur": "Shimano CUES U6000 GS",
+    "bottomBracket": "Praxis, T47 threaded, internal bearing",
+    "cassette": "Shimano CUES LG300, LINKGLIDE, 11-48, 10 speed",
+    "chain": "Shimano LG500, 9/10/11 speed"
+  },
+  "variants": [
     {
-      "id": "2fast-1500w-kit",
-      "name": "2Fast 1500W KIT",
-      "slug": "2fast-1500w-kit",
-      "category": "e-bikes",
-      "price": 500,
-      "currency": "USD",
-      "description": "Motor kit only — Battery sold separately",
-      "image": "/tr",
-      "images": [
-        "/images/products/1500w-kit-1.jpg",
-        "/images/products/1500w-kit-2.jpg"
-      ],
-      "specs": {
-        "topSpeed": "50-60 km/h",
-        "motor": "1500W Gearless Hub (MTX 39 Rim)",
-        "controller": "35A Smart Controller",
-        "displayOptions": "SW900 or UKC1",
-        "bestFor": "City streets, light off-road, everyday riding",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms",
-        "frameMaterial": "Aluminum",
-        "material": "Aluminum"
-      },
-      "variants": [
-        {
-          "name": "Wheel Size",
-          "options": ["26 INCH", "27.5 INCH", "29 INCH", "35INCH"]
-        }
-      ]
-    },
-    {
-      "id": "2fast-2000w-kit",
-      "name": "2Fast 2000W KIT",
-      "slug": "2fast-2000w-kit",
-      "category": "e-bikes",
-      "price": 550,
-      "currency": "USD",
-      "description": "Motor kit only — Battery sold separately",
-      "image": "/images/products/2000w-kit.jpg",
-      "images": [
-        "/images/products/2000w-kit-1.jpg",
-        "/images/products/2000w-kit-2.jpg"
-      ],
-      "specs": {
-        "topSpeed": "60-70 km/h",
-        "motor": "2000W Gearless Hub (MTX 39 Rim)",
-        "controller": "45A Smart Controller",
-        "displayOptions": "SW900 or UKC1",
-        "bestFor": "City streets, light off-road, everyday riding",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms"
-      },
-      "variants": [
-        {
-          "name": "Wheel Size",
-          "options": ["26 INCH", "27.5 INCH", "29 INCH"]
-        },
-        {
-          "name": "Display",
-          "options": ["SW900", "UKC1"]
-        },
-        {
-          "name": "Dropout Size (mm)",
-          "options": ["135MM", "150MM"]
-        }
-      ]
-    },
-    {
-      "id": "2fast-3000w-kit",
-      "name": "2Fast 3000W KIT",
-      "slug": "2fast-3000w-kit",
-      "category": "e-bikes",
-      "price": 650,
-      "currency": "USD",
-      "description": "Motor kit only — Battery sold separately",
-      "image": "/images/products/3000w-kit.jpg",
-      "images": [
-        "/images/products/3000w-kit-1.jpg"
-      ],
-      "specs": {
-        "topSpeed": "70-80 km/h",
-        "motor": "3000W Gearless Hub (MTX 39 Rim)",
-        "controller": "55A Smart Controller",
-        "displayOptions": "SW900 or UKC1",
-        "bestFor": "High-performance riding, steep hills",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms"
-      },
-      "variants": [
-        {
-          "name": "Wheel Size",
-          "options": ["26 INCH", "27.5 INCH", "29 INCH"]
-        },
-        {
-          "name": "Display",
-          "options": ["SW900", "UKC1"]
-        },
-        {
-          "name": "Dropout Size (mm)",
-          "options": ["135MM", "150MM"]
-        }
-      ]
-    },
-    {
-      "id": "2fast-5000w-kit",
-      "name": "2Fast 5000W KIT",
-      "slug": "2fast-5000w-kit",
-      "category": "e-bikes",
-      "price": 700,
-      "currency": "USD",
-      "description": "Motor kit only — Battery sold separately",
-      "image": "/images/products/5000w-kit.jpg",
-      "images": [
-        "/images/products/5000w-kit-1.jpg"
-      ],
-      "specs": {
-        "topSpeed": "85-95 km/h",
-        "motor": "5000W Gearless Hub (MTX 39 Rim)",
-        "controller": "65A Smart Controller",
-        "displayOptions": "SW900 or UKC1",
-        "bestFor": "Maximum performance, racing",
-        "includes": "Throttle, brake levers w/ cut-off, PAS sensor, torque arms"
-      },
-      "variants": [
-        {
-          "name": "Wheel Size",
-          "options": ["26 INCH", "27.5 INCH", "29 INCH"]
-        },
-        {
-          "name": "Display",
-          "options": ["SW900", "UKC1"]
-        },
-        {
-          "name": "Dropout Size (mm)",
-          "options": ["135MM", "150MM"]
-        }
-      ]
-    },
-    {
-      "id": "2fast-52v-battery",
-      "name": "2Fast 52V BATTERY",
-      "slug": "2fast-52v-battery",
-      "category": "e-bikes",
-      "price": 600,
-      "currency": "USD",
-      "description": "High-capacity lithium battery",
-      "image": "/images/products/52v-battery.jpg",
-      "images": [
-        "/images/products/52v-battery-1.jpg",
-        "/images/products/52v-battery-2.jpg"
-      ],
-      "specs": {
-        "capacityOptions": "20Ah / 25Ah",
-        "estimatedRange": "20Ah = 45 km, 25Ah = 55 km",
-        "bestFor": "2000W motor kits, daily commuting",
-        "cells": "A-grade lithium",
-        "bms": "Smart BMS with overcharge/discharge protection"
-      },
-      "variants": [
-        {
-          "name": "Capacity",
-          "options": ["20AH", "25AH"]
-        }
-      ]
-    },
-    {
-      "id": "2fast-72v-3000w-battery",
-      "name": "2Fast 72V 3000W BATTERY",
-      "slug": "2fast-72v-3000w-battery",
-      "category": "e-bikes",
-      "price": 750,
-      "currency": "USD",
-      "description": "High-voltage battery for performance kits",
-      "image": "/images/products/72v-battery.jpg",
-      "images": [
-        "/images/products/72v-battery-1.jpg"
-      ],
-      "specs": {
-        "capacity": "20Ah",
-        "estimatedRange": "50-60 km",
-        "bestFor": "3000W+ motor kits, high performance",
-        "cells": "A-grade lithium",
-        "bms": "Smart BMS with overcharge/discharge/short-circuit protection"
-      },
-      "variants": [
-        {
-          "name": "Capacity",
-          "options": ["20AH"]
-        }
-      ]
-    },
+      "name": "Size",
+      "options": ["S", "M", "ML", "L"]
+    }
+  ]},
     {
       "id": "ebike-headlight",
       "name": "E-Bike Headlight",
@@ -236,5 +73,6 @@
       },
       "variants": []
     }
+    
   ]
 }
