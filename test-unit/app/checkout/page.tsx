@@ -219,9 +219,8 @@ export default function CheckoutPage() {
             <div className="bg-white rounded-lg p-8 border border-neutral-200 mt-8"> {/* Added mt-8 for spacing */}
               <h2 className="text-2xl font-bold mb-6">Additional payment methods</h2>
               <PaymentMethod
-                id="coingate"
-                title="Coingate"
-                logo="/img/coingate-logo.svg"
+                id="crypto-payment"
+                title="Crypto Payment"
                 defaultOpen={true}
               >
                 <div className="space-y-4 text-sm text-neutral-600">

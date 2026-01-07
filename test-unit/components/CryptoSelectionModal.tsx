@@ -182,9 +182,13 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
       
       const { orderId } = orderData;
 
+      if (!orderId) {
+        throw new Error('Order ID was not returned from the server.');
+      }
+
       onClose();
       router.push(
-        `/payment/crypto/${crypto.symbol.toLowerCase()}?orderId=${orderId}`
+        `/payment/crypto/${crypto.symbol.toLowerCase()}?orderId=${orderId}&cartTotal=${cartTotal}&convertedAmount=${crypto.convertedAmount}&exchangeRate=${crypto.exchangeRate}`
       );
     } catch (err: any) {
       console.error('Error in handleSelectCryptoAndNavigate:', err);
@@ -201,13 +205,10 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <CustomDialogContent className="sm:max-w-[425px]">
+      <CustomDialogContent className="sm:max-w-[360px]">
         <DialogHeader className="p-6 pb-4 border-b">
           <DialogTitle className="text-xl font-semibold">Pay with Cryptocurrency</DialogTitle>
-          <div className="absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100">
-            <X className="h-4 w-4 text-gray-500 cursor-pointer" onClick={onClose} />
-            <span className="sr-only">Close</span>
-          </div>
+
         </DialogHeader>
 
         <div className="p-6 pt-4 flex-grow overflow-y-auto">
@@ -234,7 +235,7 @@ export const CryptoSelectionModal: React.FC<CryptoSelectionModalProps> = ({
               {filteredCryptos.map((crypto) => (
                 <div
                   key={crypto.id}
-                  className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                  className="flex items-center p-3 rounded-lg cursor-pointer bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
                   onClick={() => handleSelectCryptoAndNavigate(crypto)}
                 >
                   <div className="relative mr-4">
