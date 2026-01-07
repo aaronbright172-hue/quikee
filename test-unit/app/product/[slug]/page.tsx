@@ -14,12 +14,13 @@ export default function ProductPage() {
   const slug = params.slug;
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
-  const [quantity, setQuantity] = useState(1);
-  const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
-  const [mainImageSrc, setMainImageSrc] = useState(product.image);
 
   const product = productsData.products.find((p) => p.slug === slug);
   const category = product ? productsData.categories.find((c) => c.id === product.category) : null;
+
+  const [quantity, setQuantity] = useState(1);
+  const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
+  const [mainImageSrc, setMainImageSrc] = useState(product?.image ?? '');
 
   if (!product || !category) {
     return (
