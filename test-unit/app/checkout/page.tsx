@@ -1,20 +1,31 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useLocalStorage from '@/hooks/use-local-storage';
 import Link from 'next/link';
-import { ChevronLeft, Lock, AlertCircle } from 'lucide-react';
+import { ChevronLeft, Lock } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useCurrency } from '@/contexts/CurrencyContext';
-import Image from 'next/image';
 import { PaymentMethod } from '@/components/PaymentMethod';
 import { CryptoSelectionModal } from '@/components/CryptoSelectionModal';
 
-export default function CheckoutPage() {
+type FormData = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  state: string;
+  postcode: string;
+  phone: string;
+  country: string;
+};
+
+function CheckoutClientPage() {
   const { cart, cartTotal } = useCart();
   const { formatPrice } = useCurrency();
-  const [formData, setFormData] = useLocalStorage('checkout-form-data', {
+  const [formData, setFormData] = useLocalStorage<FormData>('checkout-form-data', {
     email: '',
     firstName: '',
     lastName: '',
@@ -328,5 +339,14 @@ export default function CheckoutPage() {
       cartDetails={cart} // Pass cart as cartDetails
     />
     </>
+  );
+}
+
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CheckoutClientPage />
+    </Suspense>
   );
 }
