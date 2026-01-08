@@ -12,11 +12,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Quikee - Agent Tech Company',
-  description: 'Premium tech products at unbeatable prices. We partner with leading tech companies to bring you test and evaluation units.',
+  description: 'Premium tech products at unbeatable prices. We partner with leading tech companies to bring you test andevaluation units.',
   openGraph: {
     images: [
       {
-        url: 'https://bolt.new/static/og_default.png',
+        url: '/favicon.svg', // Updated to new favicon
       },
     ],
   },
@@ -24,9 +24,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: [
       {
-        url: 'https://bolt.new/static/og_default.png',
+        url: '/favicon.svg', // Updated to new favicon
       },
     ],
+  },
+  icons: {
+    icon: '/favicon.svg', // Simpler, single favicon
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 

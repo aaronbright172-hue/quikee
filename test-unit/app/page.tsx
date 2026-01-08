@@ -162,7 +162,7 @@ export default function Home() {
             Browse our collection of premium tech products at prices you won't believe
           </p>
           <Link
-            href="/category/kits"
+            href="/category/bikes"
             className="inline-flex items-center px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-neutral-100 transition-colors"
           >
             Start Shopping

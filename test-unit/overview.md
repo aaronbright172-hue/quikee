@@ -9,7 +9,7 @@ What that means in simple terms:
 Examples of partners:
 * Phone companies (Apple, Samsung, etc.)
 * Laptop companies
-* Bike / electric bike companies
+* Bike / Electric bike companies
 * Other tech-related product companies
 
 How the company gets products

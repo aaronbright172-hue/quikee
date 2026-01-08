@@ -13,46 +13,37 @@ export default function AboutPage() {
         <div className="space-y-8">
           <div>
             <h3 className="font-bold text-neutral-900 mb-2">
-              OUR VISION: REVOLUTIONIZING YOUR JOURNEY
+              ABOUT QUIKEE: YOUR ACCESS TO PREMIUM TECH
             </h3>
             <p className="text-neutral-800 leading-relaxed">
-              At Quikee, we believe in a world where speed, efficiency, and innovation seamlessly blend with daily life. We're not just selling products; we're crafting experiences that transform your commute, electrify your adventures, and keep you connected with the pulse of technology. Our vision is to be at the forefront of the e-mobility and smart tech revolution.
+              Quikee operates as a unique agent company, connecting you with high-quality technology products from leading manufacturers. Unlike traditional retailers, we don't manufacture or directly purchase products. Instead, we partner with technology-based companies across various sectors, including phone, laptop, and electric bike companies, among others.
             </p>
           </div>
 
           <div>
             <h3 className="font-bold text-neutral-900 mb-2">
-              WHO WE ARE: PIONEERS OF PERFORMANCE
+              WHY OUR PRICES ARE UNBEATABLE
             </h3>
             <p className="text-neutral-800 leading-relaxed">
-              Born from a passion for cutting-edge engineering and a drive for superior performance, Quikee is a collective of tech enthusiasts, cyclists, and innovators. We meticulously curate and develop a range of products, with our high-performance e-bikes leading the charge, complemented by essential tech accessories that integrate flawlessly into your dynamic lifestyle.
+              Our exceptionally low prices are a direct result of our innovative operational model. We receive products directly from our partner companies as test, evaluation, or trial units. These items are authentic, fully functional, and free from defects. Since these products are not acquired through traditional purchasing channels, we can offer them to you at significantly reduced costs, passing on the savings directly.
             </p>
           </div>
 
           <div>
             <h3 className="font-bold text-neutral-900 mb-2">
-              WHAT DRIVES US: UNCOMPROMISING QUALITY & INNOVATION
+              OUR COMMITMENT: TRANSPARENCY & VALUE
             </h3>
             <p className="text-neutral-800 leading-relaxed">
-              Every item at Quikee is a testament to our commitment to excellence. We rigorously select materials, implement advanced manufacturing processes, and perform stringent quality checks to ensure durability, reliability, and exhilarating performance. Innovation isn't just a buzzword for us; it's the core of every product we offer.
+              At Quikee, our philosophy is built on transparency and providing exceptional value. Our website is designed to be your primary source of information, clearly explaining our unique process, what we do, and why our products are so affordably priced. We empower you to make informed decisions confidently, ensuring a straightforward and honest shopping experience. We focus on delivering real products with real value, without the sales pressure.
             </p>
           </div>
 
           <div>
             <h3 className="font-bold text-neutral-900 mb-2">
-              OUR PRODUCT SPECTRUM: BEYOND E-BIKES
+              QUALITY ASSURED
             </h3>
             <p className="text-neutral-800 leading-relaxed">
-              While our e-bikes redefine urban mobility and outdoor exploration, our range extends to smart devices, connectivity tools, and performance-enhancing gear. We equip you with the technology to go further, faster, and smarter, whether it's through our powerful electric rides or the gadgets that keep your world in sync.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-neutral-900 mb-2">
-              JOIN THE MOVEMENT: EXPERIENCE THE 2FAST DIFFERENCE
-            </h3>
-            <p className="text-neutral-800 leading-relaxed">
-              We invite you to explore a new dimension of speed, freedom, and technological prowess. At Quikee, you're not just purchasing a product; you're investing in a future where every journey is an adventure and every piece of tech empowers you. Discover the difference that true innovation makes.
+              Every product available through Quikee is a genuine test or evaluation unit from reputable tech companies. They are thoroughly checked to ensure full functionality and quality, giving you access to premium technology at a fraction of the original cost.
             </p>
           </div>
         </div>
