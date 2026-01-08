@@ -9,7 +9,7 @@ export default function RefundPolicyPage() {
             REFUND & WARRANTY POLICY
           </h1>
           <p className="text-neutral-800 leading-relaxed">
-            We strive to deliver high-quality e-bike products designed for performance, safety, and reliability. Please review this policy carefully before placing an order.
+            We strive to deliver high-quality products designed for performance, safety, and reliability. Please review this policy carefully before placing an order.
           </p>
         </div>
 
@@ -38,15 +38,14 @@ export default function RefundPolicyPage() {
             <p className="text-neutral-800 leading-relaxed">
               While we do not offer refunds for change of mind, we stand by the quality of our products and provide warranty coverage for manufacturing faults only.
             </p>
-            <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4 mt-4">
-              <li>Battery: 12 months</li>
-              <li>Motor: 12 months</li>
-              <li>Other e-bike parts: 6 months</li>
-            </ul>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              Warranty coverage applies only if the product has been professionally installed by a qualified e-bike technician or licensed auto electrician.
-              Proof of professional installation, such as a technician's invoice or service receipt, will be required to make a warranty claim.
+              Specific warranty durations vary by product. Please refer to the individual product page for details or contact our support team.
+            </p>
+            <p className="text-neutral-800 leading-relaxed mt-4">
+              Warranty coverage applies only if the product has been professionally installed by a qualified professional.
+              Proof of professional installation or service, such as an invoice or service receipt, will be required to make a warranty claim.
               Damage caused by incorrect installation, wiring, or modification voids the warranty.
+
             </p>
           </div>
 
@@ -55,17 +54,15 @@ export default function RefundPolicyPage() {
               DIY INSTALLATION NOTICE
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              DIY conversion kits and batteries are DIY products, allowing riders to build and customize their own electric bikes. We understand that both experienced and novice users may undertake these projects for fun or learning. However, these are complex electrical systems, and incorrect installation can easily lead to damage or faults.
+              Many of our products may require installation. We understand that both experienced and novice users may undertake these projects for fun or learning. However, for certain products, incorrect installation can easily lead to damage or faults.
             </p>
             <p className="text-neutral-800 leading-relaxed mt-4">
               By purchasing and installing our products yourself, you acknowledge the inherent risks. Any damage caused by incorrect installation, incorrectly connected, modified, or damaged during setup, the issue will not be considered a manufacturing fault and will not be covered under warranty.
             </p>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              We recommend all installations be carried out by a qualified e-bike technician, electrician, or experienced mechanic to ensure safe operation and to maintain warranty eligibility.
+              We recommend all installations be carried out by a qualified professional or experienced technician to ensure safe operation and to maintain warranty eligibility.
             </p>
-            <p className="text-neutral-800 leading-relaxed mt-4">
-              *Please read our Terms and Conditions regarding battery fitment before purchasing*
-            </p>
+            {/* Removed specific battery fitment note to generalize the policy */}
           </div>
 
           <div>
@@ -83,8 +80,7 @@ export default function RefundPolicyPage() {
               <li>Burnt components, melted wires, or short circuits</li>
               <li>Opening or attempting to repair/modify the product</li>
               <li>Misuse, overloading, or negligence</li>
-              <li>Incorrect voltage being applied to controllers</li>
-              <li>Physical damage, impacts, crashes, failure to remove bottle cage holder bolts</li>
+              <li>Physical damage, impacts, or crashes</li>
               <li>Natural wear and tear or normal aging of components</li>
             </ul>
             <p className="text-neutral-800 leading-relaxed mt-4">

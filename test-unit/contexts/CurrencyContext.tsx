@@ -73,28 +73,55 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
       const data = await response.json();
       const userCurrencyCode = data.currency;
 
-      const foundCurrency = currenciesData.currencies.find(
-        (c) => c.code === userCurrencyCode
-      );
+      // Define the allowed currency codes
+      const allowedCurrencyCodes = ['USD', 'AUD', 'EUR', 'GBP', 'CAD', 'JPY', 'NZD', 'SGD'];
 
-            if (foundCurrency) {
-              setCurrencyState(foundCurrency);
-              localStorage.setItem('currency', JSON.stringify(foundCurrency));
-            } else {
-              // If the detected currency is not in our predefined list,
-              // create a new Currency object for it and use it.
-              const customCurrency: Currency = {
-                code: userCurrencyCode,
-                symbol: data.currency_symbol || userCurrencyCode, // Use symbol from API, or code if not available
-                name: data.currency_name || userCurrencyCode, // Use name from API, or code if not available
-                flag: '', // No flag available for unsupported currencies
-              };
-              setCurrencyState(customCurrency);
-              localStorage.setItem('currency', JSON.stringify(customCurrency));
-              console.log(`Detected unsupported currency (${userCurrencyCode}), using it for display.`);
-            }    } catch (error) {
-      console.log('Could not detect currency, using default');
-      toast.error('Could not detect your currency. Defaulting to USD.');
+      let targetCurrency: Currency | undefined;
+
+      // Check if the detected user currency is in our allowed list
+      if (allowedCurrencyCodes.includes(userCurrencyCode)) {
+        targetCurrency = currenciesData.currencies.find(
+          (c) => c.code === userCurrencyCode
+        );
+      }
+
+      // If no target currency was found (either not in allowed list or not found in currenciesData),
+      // default to Singapore Dollar (SGD)
+      if (!targetCurrency) {
+        targetCurrency = currenciesData.currencies.find(
+          (c) => c.code === 'SGD'
+        );
+        // Fallback to USD if SGD is somehow not found (shouldn't happen with updated currencies.json)
+        if (!targetCurrency) {
+          targetCurrency = currenciesData.currencies.find((c) => c.code === 'USD');
+        }
+        console.log(`Detected currency (${userCurrencyCode}) not allowed or not found. Defaulting to SGD.`);
+      }
+
+      if (targetCurrency) {
+        setCurrencyState(targetCurrency);
+        localStorage.setItem('currency', JSON.stringify(targetCurrency));
+      } else {
+        // Fallback if even SGD/USD couldn't be set (should ideally not be reached)
+        console.error('Could not set any default currency. This should not happen.');
+        toast.error('Could not set a default currency. Defaulting to application base currency.');
+      }
+
+    } catch (error) {
+      console.error('Could not detect user currency, or an error occurred. Defaulting to SGD.', error);
+      toast.error('Could not detect your currency. Defaulting to SGD.');
+      // Ensure a default is set even if IP detection fails entirely
+      const sgdCurrency = currenciesData.currencies.find((c) => c.code === 'SGD');
+      if (sgdCurrency) {
+        setCurrencyState(sgdCurrency);
+        localStorage.setItem('currency', JSON.stringify(sgdCurrency));
+      } else {
+        const usdCurrency = currenciesData.currencies.find((c) => c.code === 'USD');
+        if (usdCurrency) {
+          setCurrencyState(usdCurrency);
+          localStorage.setItem('currency', JSON.stringify(usdCurrency));
+        }
+      }
     }
   };
 

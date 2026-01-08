@@ -177,7 +177,8 @@ export default function CheckoutPage() {
               </p>
 
               {/* Credit Card Details - Always Visible */}
-              <div className="p-4 border-2 border-neutral-300 rounded-lg">
+              <div className="group relative">
+                <div className="p-4 border-2 border-neutral-300 rounded-lg transition-opacity duration-300 group-hover:opacity-20 group-hover:pointer-events-none">
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-medium">Credit Card</span>
                     <div className="flex items-center gap-2">
@@ -221,6 +222,13 @@ export default function CheckoutPage() {
                         <span className="text-sm">Use shipping address as billing address</span>
                       </label>
                   </div>
+                </div>
+                <div className="absolute inset-0 hidden items-center justify-center bg-white/50 backdrop-blur-sm rounded-lg group-hover:flex">
+                  <div className="text-center p-4 bg-neutral-800 text-white rounded-lg shadow-lg">
+                    <p className="font-semibold">Under Maintenance</p>
+                    <p className="text-sm">This payment method is temporarily unavailable.</p>
+                  </div>
+                </div>
               </div>
             </div>
 

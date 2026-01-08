@@ -13,6 +13,16 @@ export default function ShippingPolicyPage() {
         <div className="space-y-8">
           <div>
             <h2 className="font-bold text-xl text-neutral-900 mb-2">
+              SINGAPORE EXPRESS SHIPPING
+            </h2>
+            <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
+              <li>Bicycles: Same day - 3 days</li>
+              <li>Singapore delivery Only.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="font-bold text-xl text-neutral-900 mb-2">
               EXPRESS SHIPPING
             </h2>
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
@@ -29,7 +39,7 @@ export default function ShippingPolicyPage() {
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
               <li>Batteries: 40-70 days</li>
               <li>Kits: 40-70 days</li>
-              <li>Accessories: 5-10 business days (Australia only)</li>
+              <li>Accessories: 5-10 business days</li>
               <li>Ideal for cost-effective shipping if you don't mind waiting.</li>
             </ul>
           </div>
@@ -58,7 +68,7 @@ export default function ShippingPolicyPage() {
               DELAYS
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              * 2Fast E-Bikes is not responsible for shipping delays once orders have been dispatched.
+              * Quikee is not responsible for shipping delays once orders have been dispatched.
             </p>
           </div>
 
@@ -70,7 +80,7 @@ export default function ShippingPolicyPage() {
               Once an order has been dispatched, customers receive full tracking details and the shipping company is provided with the customer's phone number for delivery contact. If the shipping company states or notification was not received, a redelivery is necessary.
             </p>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              Customers are responsible for any charges for redelivery or rerouting. 2Fast E-Bikes is not responsible for deliveries that fail or that follow no delivery arrangements and must be handled directly with the shipping company by the customer. 2Fast E-Bikes is not responsible for any incorrect shipping information provided at checkout.
+              Customers are responsible for any charges for redelivery or rerouting. Quikee is not responsible for deliveries that fail or that follow no delivery arrangements and must be handled directly with the shipping company by the customer. Quikee is not responsible for any incorrect shipping information provided at checkout.
             </p>
           </div>
         </div>

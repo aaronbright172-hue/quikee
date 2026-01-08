@@ -10,7 +10,7 @@ const slides = [
     subtitle: 'Discover evaluation units from top brands at up to 70% off retail.',
     image: 'https://images.unsplash.com/photo-1601971360277-7b4c8aa60894?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ctaText: 'Browse All Products',
-    ctaLink: '/category/all',
+    ctaLink: '/category/bikes',
   },
   {
     title: 'Quality You Can Trust',
@@ -20,11 +20,11 @@ const slides = [
     ctaLink: '/about',
   },
   {
-    title: 'The Future of E-Bikes is Here',
+    title: 'The Future of Bikes is Here',
     subtitle: 'Explore our new collection of high-performance electric bikes.',
     image: 'https://images.unsplash.com/photo-1599355397843-718871791ad3?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ctaText: 'Shop E-Bikes',
-    ctaLink: '/category/e-bikes',
+    ctaText: 'Shop Bikes',
+    ctaLink: '/category/bikes',
   },
 ];
 

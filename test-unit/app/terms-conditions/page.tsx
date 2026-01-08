@@ -9,7 +9,7 @@ export default function TermsAndConditionsPage() {
             TERMS & CONDITIONS
           </h1>
           <p className="text-neutral-800 leading-relaxed">
-            These Terms & Conditions govern your use of 2Fast E-Bikes products and website (2fastebikes.com). By accessing our website or purchasing products, you agree to these terms.
+            These Terms & Conditions govern your use of Quikee products and website (2fastebikes.com). By accessing our website or purchasing products, you agree to these terms.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function TermsAndConditionsPage() {
               3. LEGAL USE & COMPLIANCE
             </h2>
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
-              <li>Our products may exceed legal e-bike limits for public road use.</li>
+              <li>Our products may exceed legal bike limits for public road use.</li>
               <li>It is your responsibility to know and comply with all applicable local laws unless permit is otherwise.</li>
               <li>Customers are responsible for ensuring compliance with their local traffic authority regulations.</li>
             </ul>
@@ -63,7 +63,7 @@ export default function TermsAndConditionsPage() {
               By purchasing and installing our products yourself, you acknowledge the inherent risks. Any damage caused by incorrect installation, incorrectly connected, modified, or damaged during setup, the issue will not be considered a manufacturing fault and will not be covered under warranty.
             </p>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              We recommend all installations be carried out by a qualified e-bike technician, electrician, or experienced mechanic to ensure safe operation and to maintain warranty eligibility.
+              We recommend all installations be carried out by a qualified bike technician, electrician, or experienced mechanic to ensure safe operation and to maintain warranty eligibility.
             </p>
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4 mt-4">
               <li>Torque arms must be fitted at all times.</li>
@@ -73,7 +73,7 @@ export default function TermsAndConditionsPage() {
             </ul>
             <p className="text-neutral-800 leading-relaxed mt-4">
               By purchasing our products, you agree that you are solely responsible for verifying the legal use, installation, wiring, and modification of the product.
-              The product is not installed by a qualified e-bike technician, licensed auto electrician, or other certified professional. The installer is responsible for the warranty.
+              The product is not installed by a qualified bike technician, licensed auto electrician, or other certified professional. The installer is responsible for the warranty.
             </p>
           </div>
 
@@ -123,9 +123,9 @@ export default function TermsAndConditionsPage() {
             </h2>
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
               <li>Use of our products is at your own risk.</li>
-              <li>2Fast E-Bikes is not liable for injuries, damages, or losses arising from misuse, incorrect installation, or non-compliance with local laws.</li>
+              <li>Quikee is not liable for injuries, damages, or losses arising from misuse, incorrect installation, or non-compliance with local laws.</li>
               <li>We are not responsible for any modifications or alterations made to our products.</li>
-              <li>2Fast E-Bikes is not responsible for any costs, damages, or losses resulting from user error or third-party modifications.</li>
+              <li>Quikee is not responsible for any costs, damages, or losses resulting from user error or third-party modifications.</li>
             </ul>
           </div>
 
@@ -135,7 +135,7 @@ export default function TermsAndConditionsPage() {
             </h2>
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
               <li>These terms are governed by the laws of Australia.</li>
-              <li>Customers must comply with all applicable traffic, import, and safety laws when using e-bikes.</li>
+              <li>Customers must comply with all applicable traffic, import, and safety laws when using bikes.</li>
             </ul>
           </div>
 

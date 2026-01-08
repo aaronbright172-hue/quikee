@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import productsData from '@/data/products.json';
 
 const categoryImages = [
-  'https://images.unsplash.com/photo-1624243519828-52a0f2c88af3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // E-Bikes
+  'https://images.unsplash.com/photo-1624243519828-52a0f2c88af3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Bikes
   'https://images.unsplash.com/photo-1623593476267-c7e98d1fb572?q=80&w=1065&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',  // Phones & Tablets
   'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Laptops
   'https://images.unsplash.com/photo-1763041821558-13fb6264be3f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZSUyMGJpa2UlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHx8MA%3D%3D' // Accessories

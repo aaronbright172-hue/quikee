@@ -37,36 +37,6 @@
       "flag": "🇯🇵"
     },
     {
-      "code": "NGN",
-      "symbol": "₦",
-      "name": "Nigerian Naira",
-      "flag": "🇳🇬"
-    },
-    {
-      "code": "INR",
-      "symbol": "₹",
-      "name": "Indian Rupee",
-      "flag": "🇮🇳"
-    },
-    {
-      "code": "CNY",
-      "symbol": "¥",
-      "name": "Chinese Yuan",
-      "flag": "🇨🇳"
-    },
-    {
-      "code": "CHF",
-      "symbol": "Fr",
-      "name": "Swiss Franc",
-      "flag": "🇨🇭"
-    },
-    {
-      "code": "SEK",
-      "symbol": "kr",
-      "name": "Swedish Krona",
-      "flag": "🇸🇪"
-    },
-    {
       "code": "NZD",
       "symbol": "NZ$",
       "name": "New Zealand Dollar",
@@ -77,18 +47,6 @@
       "symbol": "S$",
       "name": "Singapore Dollar",
       "flag": "🇸🇬"
-    },
-    {
-      "code": "HKD",
-      "symbol": "HK$",
-      "name": "Hong Kong Dollar",
-      "flag": "🇭🇰"
-    },
-    {
-      "code": "ZAR",
-      "symbol": "R",
-      "name": "South African Rand",
-      "flag": "🇿🇦"
     }
   ]
 }
