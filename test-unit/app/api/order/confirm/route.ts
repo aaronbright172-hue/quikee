@@ -1,7 +1,6 @@
 // test-unit/app/api/order/confirm/route.ts
 import { NextResponse } from 'next/server';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
+import { supabaseServiceRole } from '@/lib/supabase/service';
 
 export async function POST(request: Request) {
   try {
@@ -12,25 +11,7 @@ export async function POST(request: Request) {
     }
 
     // Update the order status in Supabase using the service role client
-    const cookieStore = await cookies();
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value
-          },
-          set(name: string, value: string, options: CookieOptions) {
-            cookieStore.set({ name, value, ...options })
-          },
-          remove(name: string, options: CookieOptions) {
-            cookieStore.set({ name, value: '', ...options })
-          },
-        },
-      }
-    );
-    const { data, error } = await supabase
+    const { data, error } = await supabaseServiceRole
       .from('orders')
       .update({ payment_status: 'paid' }) // Set status to 'paid'
       .eq('id', orderId)
