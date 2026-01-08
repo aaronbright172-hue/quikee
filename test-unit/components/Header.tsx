@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import QuikeeLogo from './QuikeeLogo';
 import { useCart } from '@/contexts/CartContext';
 import productsData from '@/data/products.json';
 
@@ -66,10 +67,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold tracking-tight">
-              <span className={isAtTopAndHomePage ? 'text-white' : 'text-black'}>Quikee</span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <QuikeeLogo className={isAtTopAndHomePage ? 'text-white' : 'text-black'} />
           </Link>
 
           {/* Desktop Navigation */}
