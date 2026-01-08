@@ -58,7 +58,7 @@ function OrderConfirmationContent() {
     <div className="min-h-screen bg-neutral-50 flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center">
         <h1 className="text-3xl font-bold text-green-600 mb-4">Order Confirmed!</h1>
-        <p className="text-neutral-700 mb-6">Your order has been successfully placed and is awaiting cryptocurrency payment confirmation.</p>
+        <p className="text-neutral-700 mb-6">Your order has been successfully placed and is awaiting cryptocurrency payment confirmation. A confirmation and payment status update will be sent to your email once the transaction is fully processed.</p>
         <p className="text-neutral-600 text-sm mb-4">
           **Order ID:** <span className="font-mono font-semibold">{orderId}</span>
         </p>
