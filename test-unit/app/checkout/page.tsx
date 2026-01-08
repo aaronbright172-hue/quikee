@@ -109,10 +109,20 @@ function CheckoutClientPage() {
                 onChange={handleInputChange}
                 className={`w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:border-black ${formInteracted && !formData.country ? 'border-red-500' : 'border-neutral-300'}`}
               >
-                <option>United States</option>
-                <option>Canada</option>
-                <option>United Kingdom</option>
-                <option>Australia</option>
+                {/* Dynamically generated country options */}
+                {
+                  [
+                    "United States",
+                    "Australia",
+                    "Canada",
+                    "United Kingdom",
+                    "Japan",
+                    "New Zealand",
+                    "Singapore"
+                  ].sort().map(country => (
+                    <option key={country} value={country}>{country}</option>
+                  ))
+                }
               </select>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-4">
