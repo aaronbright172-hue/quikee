@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { useParams, useSearchParams, useRouter } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link'; // For any potential links in the future or for Terms/Privacy
-import { Clock, Copy, Check, ChevronLeft } from 'lucide-react'; // Import Check icon for copy success
-import { Button } from '@/components/ui/button'; // Assuming a Button component exists
-import { useCart } from '@/contexts/CartContext';
+import React, { useEffect, useState } from "react";
+import { useParams, useSearchParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link"; // For any potential links in the future or for Terms/Privacy
+import { Clock, Copy, Check, ChevronLeft } from "lucide-react"; // Import Check icon for copy success
+import { Button } from "@/components/ui/button"; // Assuming a Button component exists
+import { useCart } from "@/contexts/CartContext";
 
 export default function CryptoPaymentPage() {
   const params = useParams();
@@ -15,10 +15,12 @@ export default function CryptoPaymentPage() {
   const { clearCart } = useCart();
 
   const cryptoCode = params.slug as string;
-  const orderId = searchParams.get('orderId'); // Get orderId from search params
-  const cartTotal = parseFloat(searchParams.get('cartTotal') || '0');
-  const convertedAmount = parseFloat(searchParams.get('convertedAmount') || '0');
-  const exchangeRate = parseFloat(searchParams.get('exchangeRate') || '0');
+  const orderId = searchParams.get("orderId"); // Get orderId from search params
+  const cartTotal = parseFloat(searchParams.get("cartTotal") || "0");
+  const convertedAmount = parseFloat(
+    searchParams.get("convertedAmount") || "0"
+  );
+  const exchangeRate = parseFloat(searchParams.get("exchangeRate") || "0");
   const [address, setAddress] = useState<string | null>(null);
   const [barcodeUrl, setBarcodeUrl] = useState<string | null>(null);
   const [network, setNetwork] = useState<string | null>(null);
@@ -28,8 +30,17 @@ export default function CryptoPaymentPage() {
   const [copied, setCopied] = useState<string | null>(null); // State to show which item was copied
 
   useEffect(() => {
-    if (!cryptoCode || !orderId || isNaN(cartTotal) || cartTotal <= 0 || isNaN(convertedAmount) || convertedAmount <= 0) {
-      setError('Missing payment information or order ID. Please return to checkout.');
+    if (
+      !cryptoCode ||
+      !orderId ||
+      isNaN(cartTotal) ||
+      cartTotal <= 0 ||
+      isNaN(convertedAmount) ||
+      convertedAmount <= 0
+    ) {
+      setError(
+        "Missing payment information or order ID. Please return to checkout."
+      );
       setLoading(false);
       return;
     }
@@ -37,16 +48,18 @@ export default function CryptoPaymentPage() {
     const fetchPaymentDetails = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/crypto/details?cryptoCode=${cryptoCode}`);
+        const response = await fetch(
+          `/api/crypto/details?cryptoCode=${cryptoCode}`
+        );
         if (!response.ok) {
-          throw new Error('Failed to fetch crypto payment details.');
+          throw new Error("Failed to fetch crypto payment details.");
         }
         const data = await response.json();
         setAddress(data.address);
         setBarcodeUrl(data.barcode_url);
         setNetwork(data.network);
       } catch (err: any) {
-        setError(err.message || 'Error fetching payment details.');
+        setError(err.message || "Error fetching payment details.");
       } finally {
         setLoading(false);
       }
@@ -76,7 +89,9 @@ export default function CryptoPaymentPage() {
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const handleCopy = (text: string, type: string) => {
@@ -87,50 +102,54 @@ export default function CryptoPaymentPage() {
 
   const handlePaymentPaid = async () => {
     if (!orderId) {
-      setError('Cannot confirm payment: Missing Order ID.');
+      setError("Cannot confirm payment: Missing Order ID.");
       return;
     }
 
     try {
       setLoading(true); // Indicate that payment confirmation is in progress
-      const response = await fetch('/api/order/confirm', {
-        method: 'POST',
+      const response = await fetch("/api/order/confirm", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ orderId }),
       });
 
       if (!response.ok) {
         const errData = await response.json();
-        let errorMessage = 'Failed to confirm payment.'; // Default fallback
+        let errorMessage = "Failed to confirm payment."; // Default fallback
 
-        if (errData && typeof errData === 'object') {
-            if (errData.message) {
-                errorMessage = errData.message;
-            } else if (errData.error) {
-                errorMessage = errData.error;
-            } else {
-                // If no specific message or error field, try to stringify the whole object
-                try {
-                    errorMessage = JSON.stringify(errData, null, 2); // Pretty print for better readability
-                } catch (e) {
-                    errorMessage = 'Failed to confirm payment: Could not parse error details.';
-                }
+        if (errData && typeof errData === "object") {
+          if (errData.message) {
+            errorMessage = errData.message;
+          } else if (errData.error) {
+            errorMessage = errData.error;
+          } else {
+            // If no specific message or error field, try to stringify the whole object
+            try {
+              errorMessage = JSON.stringify(errData, null, 2); // Pretty print for better readability
+            } catch (e) {
+              errorMessage =
+                "Failed to confirm payment: Could not parse error details.";
             }
-        } else if (errData) { // If errData exists but is not an object (e.g., a string)
-            errorMessage = String(errData);
+          }
+        } else if (errData) {
+          // If errData exists but is not an object (e.g., a string)
+          errorMessage = String(errData);
         }
         throw new Error(errorMessage);
       }
 
       const result = await response.json();
-      console.log('Payment confirmation successful:', result.message);
+      console.log("Payment confirmation successful:", result.message);
       clearCart(); // Clear the cart after successful payment confirmation
       router.push(`/order-confirmation?orderId=${orderId}`); // Redirect to a confirmation page
     } catch (err: any) {
-      console.error('Error confirming payment:', err);
-      setError(err.message || 'Error confirming payment. Please contact support.');
+      console.error("Error confirming payment:", err);
+      setError(
+        err.message || "Error confirming payment. Please contact support."
+      );
     } finally {
       setLoading(false);
     }
@@ -158,7 +177,11 @@ export default function CryptoPaymentPage() {
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md text-center">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <Button variant="ghost" size="icon" onClick={() => router.push('/checkout?showCryptoModal=true')}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => router.push("/checkout?showCryptoModal=true")}
+          >
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <h1 className="text-xl font-semibold">Pay for your order</h1>
@@ -170,17 +193,25 @@ export default function CryptoPaymentPage() {
 
         {/* Order Info */}
         <div className="mb-6">
-          <p className="text-neutral-500 mb-2">Total amount in USD: ${cartTotal.toFixed(2)}</p>
+          <p className="text-neutral-500 mb-2">
+            Total amount in SGD: S${cartTotal.toFixed(2)}
+          </p>
           <div className="flex items-center justify-center gap-2 text-3xl font-bold">
-            <span>{convertedAmount.toFixed(6)} {cryptoCode.toUpperCase()}</span>
+            {/* <span>{convertedAmount.toFixed(6)} {cryptoCode.toUpperCase()}</span> */}
           </div>
-          <p className="text-sm text-neutral-600">Exchange Rate: 1 {cryptoCode.toUpperCase()} = {exchangeRate.toFixed(2)} USD</p>
+          {/* <p className="text-sm text-neutral-600">Exchange Rate: 1 {cryptoCode.toUpperCase()} = {exchangeRate.toFixed(2)} USD</p> */}
         </div>
 
         {/* Barcode */}
         {barcodeUrl && (
           <div className="mb-6">
-            <Image src={barcodeUrl} alt="Payment Barcode" width={200} height={200} className="mx-auto" />
+            <Image
+              src={barcodeUrl}
+              alt="Payment Barcode"
+              width={200}
+              height={200}
+              className="mx-auto"
+            />
           </div>
         )}
 
@@ -193,10 +224,14 @@ export default function CryptoPaymentPage() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => handleCopy(address, 'address')}
+                onClick={() => handleCopy(address, "address")}
                 className="ml-2 w-8 h-8 flex-shrink-0"
               >
-                {copied === 'address' ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                {copied === "address" ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
                 <span className="sr-only">Copy address</span>
               </Button>
             </div>
@@ -212,10 +247,14 @@ export default function CryptoPaymentPage() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => handleCopy(network, 'network')}
+                onClick={() => handleCopy(network, "network")}
                 className="ml-2 w-8 h-8 flex-shrink-0"
               >
-                {copied === 'network' ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                {copied === "network" ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
                 <span className="sr-only">Copy network</span>
               </Button>
             </div>
