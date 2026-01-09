@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { useCurrency } from '@/contexts/CurrencyContext';
+import React from "react";
+import Link from "next/link";
+import { useCurrency } from "@/contexts/CurrencyContext";
 // No longer need to import currencies from json directly here as it's available from context
 // import { currencies } from '@/data/currencies.json';
 import {
@@ -11,13 +11,17 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'; // Assuming these are shadcn-ui components
+} from "@/components/ui/select"; // Assuming these are shadcn-ui components
 
 const Footer: React.FC = () => {
-  const { currency: currentCurrency, setCurrency, currencies: allCurrencies } = useCurrency();
+  const {
+    currency: currentCurrency,
+    setCurrency,
+    currencies: allCurrencies,
+  } = useCurrency();
 
   const handleCurrencyChange = (code: string) => {
-    const selectedCurrency = allCurrencies.find(c => c.code === code);
+    const selectedCurrency = allCurrencies.find((c) => c.code === code);
     if (selectedCurrency) {
       setCurrency(selectedCurrency);
     }
@@ -29,38 +33,52 @@ const Footer: React.FC = () => {
         <div className="mb-8 md:mb-0">
           <h3 className="text-lg font-semibold mb-4">SUPPORT</h3>
           <ul className="space-y-2">
-            <li>
+            {/* <li>
               <Link href="/contact" className="text-sm text-gray-600 hover:text-gray-900">
                 Contact
               </Link>
-            </li>
+            </li> */}
             <li>
-              <Link href="/refund-policy" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link
+                href="/refund-policy"
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
                 Refund Policy
               </Link>
             </li>
             <li>
-              <Link href="/shipping-policy" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link
+                href="/shipping-policy"
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
                 Shipping Policy
               </Link>
             </li>
             <li>
-              <Link href="/privacy-policy" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link
+                href="/privacy-policy"
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/terms-conditions" className="text-sm text-gray-600 hover:text-gray-900">
+              <Link
+                href="/terms-conditions"
+                className="text-sm text-gray-600 hover:text-gray-900"
+              >
                 Terms & Conditions
               </Link>
             </li>
           </ul>
           <div className="mt-4">
-            <Select onValueChange={handleCurrencyChange} value={currentCurrency.code}>
+            <Select
+              onValueChange={handleCurrencyChange}
+              value={currentCurrency.code}
+            >
               <SelectTrigger className="w-[150px]">
                 <SelectValue>
-                  {currentCurrency.flag}{' '}
-                  {currentCurrency.code}{' '}
+                  {currentCurrency.flag} {currentCurrency.code}{" "}
                   {currentCurrency.symbol}
                 </SelectValue>
               </SelectTrigger>
@@ -69,7 +87,9 @@ const Footer: React.FC = () => {
                   <SelectItem key={curr.code} value={curr.code}>
                     <div className="flex items-center gap-2">
                       <span>{curr.flag}</span>
-                      <span>{curr.code} {curr.symbol}</span>
+                      <span>
+                        {curr.code} {curr.symbol}
+                      </span>
                     </div>
                   </SelectItem>
                 ))}
@@ -79,7 +99,9 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:items-end">
-          <p className="text-sm text-gray-500 mt-4">&copy; Quikee {new Date().getFullYear()}</p>
+          <p className="text-sm text-gray-500 mt-4">
+            &copy; Quikee {new Date().getFullYear()}
+          </p>
         </div>
       </div>
     </footer>

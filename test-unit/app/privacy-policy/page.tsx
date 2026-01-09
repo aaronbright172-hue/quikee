@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -8,12 +8,18 @@ export default function PrivacyPolicyPage() {
           <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
             PRIVACY POLICY
           </h1>
-          <p className="text-sm text-neutral-600 mb-4">Last Updated: August 4, 2025</p>
-          <p className="text-neutral-800 leading-relaxed">
-            This Privacy Policy describes how Quikee Bikes ("we", "us", "our") collects, uses, and protects your personal information when you visit our website (2fastebikes.com) or use our services. By using our site, you agree to the practices described here.
+          <p className="text-sm text-neutral-600 mb-4">
+            Last Updated: August 4, 2025
           </p>
           <p className="text-neutral-800 leading-relaxed">
-            We may update this policy from time to time by posting a new version on our website.
+            This Privacy Policy describes how Quikee Bikes ("we", "us", "our")
+            collects, uses, and protects your personal information when you
+            visit our website (quikee.top) or use our services. By using our
+            site, you agree to the practices described here.
+          </p>
+          <p className="text-neutral-800 leading-relaxed">
+            We may update this policy from time to time by posting a new version
+            on our website.
           </p>
         </div>
 
@@ -55,7 +61,10 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc list-inside text-neutral-800 leading-relaxed space-y-1 ml-4">
               <li>To process orders and manage your account</li>
               <li>To provide customer support</li>
-              <li>To send marketing, and advertising, or promotions (you can opt out anytime)</li>
+              <li>
+                To send marketing, and advertising, or promotions (you can opt
+                out anytime)
+              </li>
               <li>To detect and prevent fraud</li>
               <li>To improve site performance and ads</li>
             </ul>
@@ -66,7 +75,9 @@ export default function PrivacyPolicyPage() {
               3. COOKIES
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              We use cookies to improve your shopping experience and personalise content. You can control cookie settings through your browser. For more information, please see our Cookie Policy.
+              We use cookies to improve your shopping experience and personalise
+              content. You can control cookie settings through your browser. For
+              more information, please see our Cookie Policy.
             </p>
           </div>
 
@@ -84,7 +95,8 @@ export default function PrivacyPolicyPage() {
               <li>With your consent or as part of a group</li>
             </ul>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              We do not sell or share your sensitive personal information without consent.
+              We do not sell or share your sensitive personal information
+              without consent.
             </p>
           </div>
 
@@ -103,7 +115,8 @@ export default function PrivacyPolicyPage() {
               <li>Object to processing your data</li>
             </ul>
             <p className="text-neutral-800 leading-relaxed mt-4">
-              To make a request, contact us at info@2fastebikes.com. We may verify your identity before processing your request.
+              To make a request, contact us at info@quikee.top. We may verify
+              your identity before processing your request.
             </p>
           </div>
 
@@ -112,7 +125,10 @@ export default function PrivacyPolicyPage() {
               6. DATA RETENTION & SECURITY
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              We keep your information as long as needed to provide services and meet legal requirements. We use security measures to protect your data, but no method is 100% secure. Avoid sending sensitive details through unsecured channels.
+              We keep your information as long as needed to provide services and
+              meet legal requirements. We use security measures to protect your
+              data, but no method is 100% secure. Avoid sending sensitive
+              details through unsecured channels.
             </p>
           </div>
 
@@ -121,7 +137,8 @@ export default function PrivacyPolicyPage() {
               7. CHILDREN'S PRIVACY
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              Our site is not intended for children under 16. We do not knowingly collect their personal information.
+              Our site is not intended for children under 16. We do not
+              knowingly collect their personal information.
             </p>
           </div>
 
@@ -130,7 +147,9 @@ export default function PrivacyPolicyPage() {
               8. INTERNATIONAL USERS
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              If you are outside Australia, your information may be stored and processed in other countries. We use recognised safeguards for international data transfers.
+              If you are outside Australia, your information may be stored and
+              processed in other countries. We use recognised safeguards for
+              international data transfers.
             </p>
           </div>
 
@@ -139,7 +158,8 @@ export default function PrivacyPolicyPage() {
               9. CONTACT US
             </h2>
             <p className="text-neutral-800 leading-relaxed">
-              If you have questions about this policy or how your data is handled, email: info@2fastebikes.com
+              If you have questions about this policy or how your data is
+              handled, email: info@quikee.top
             </p>
           </div>
         </div>

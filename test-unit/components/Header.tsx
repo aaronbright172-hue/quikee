@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ChevronDown, ShoppingCart, Menu, X } from 'lucide-react';
-import { useCurrency } from '@/contexts/CurrencyContext';
-import QuikeeLogo from './QuikeeLogo';
-import { useCart } from '@/contexts/CartContext';
-import productsData from '@/data/products.json';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown, ShoppingCart, Menu, X } from "lucide-react";
+import { useCurrency } from "@/contexts/CurrencyContext";
+import QuikeeLogo from "./QuikeeLogo";
+import { useCart } from "@/contexts/CartContext";
+import productsData from "@/data/products.json";
 
 export default function Header() {
   const { currency, currencies, setCurrency } = useCurrency();
@@ -19,7 +19,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === "/";
 
   const categories = productsData.categories;
 
@@ -32,8 +32,8 @@ export default function Header() {
     // Set initial state
     handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleShopClick = () => {
@@ -50,16 +50,16 @@ export default function Header() {
 
   const headerClasses = `-translate-y-px sticky top-0 z-50 w-full border-b transition-all duration-300 ${
     isAtTopAndHomePage
-      ? 'border-transparent bg-transparent text-white'
-      : 'border-neutral-200 bg-white/90 backdrop-blur-sm text-black'
+      ? "border-transparent bg-transparent text-white"
+      : "border-neutral-200 bg-white/90 backdrop-blur-sm text-black"
   }`;
 
   const linkClasses = `transition-colors ${
-    isAtTopAndHomePage ? 'hover:text-white/80' : 'hover:text-black'
+    isAtTopAndHomePage ? "hover:text-white/80" : "hover:text-black"
   }`;
 
   const iconButtonClasses = `relative p-2 rounded-lg transition-colors ${
-    isAtTopAndHomePage ? 'hover:bg-white/10' : 'hover:bg-neutral-100'
+    isAtTopAndHomePage ? "hover:bg-white/10" : "hover:bg-neutral-100"
   }`;
 
   return (
@@ -68,7 +68,9 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <QuikeeLogo className={isAtTopAndHomePage ? 'text-white' : 'text-black'} />
+            <QuikeeLogo
+              className={isAtTopAndHomePage ? "text-white" : "text-black"}
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -101,7 +103,9 @@ export default function Header() {
                         onClick={handleShopMenuClose}
                         className="block px-4 py-3 hover:bg-neutral-50 transition-colors"
                       >
-                        <div className="font-medium text-black">{category.name}</div>
+                        <div className="font-medium text-black">
+                          {category.name}
+                        </div>
                       </Link>
                     ))}
                   </div>
@@ -117,9 +121,9 @@ export default function Header() {
               FAQ
             </Link>
 
-            <Link href="/contact" className={`font-medium ${linkClasses}`}>
+            {/* <Link href="/contact" className={`font-medium ${linkClasses}`}>
               Contact
-            </Link>
+            </Link> */}
           </nav>
 
           {/* Right Actions */}
@@ -129,7 +133,9 @@ export default function Header() {
               <button
                 onClick={() => setIsCurrencyOpen(!isCurrencyOpen)}
                 className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
-                  isAtTopAndHomePage ? 'hover:bg-white/10' : 'hover:bg-neutral-100'
+                  isAtTopAndHomePage
+                    ? "hover:bg-white/10"
+                    : "hover:bg-neutral-100"
                 }`}
               >
                 <span className="font-medium text-sm">
@@ -153,14 +159,20 @@ export default function Header() {
                           setIsCurrencyOpen(false);
                         }}
                         className={`w-full text-left px-4 py-2 hover:bg-neutral-50 transition-colors ${
-                          curr.code === currency.code ? 'bg-neutral-100' : ''
+                          curr.code === currency.code ? "bg-neutral-100" : ""
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-medium">{curr.flag} {curr.code}</span>
-                          <span className="text-sm text-neutral-500">{curr.symbol}</span>
+                          <span className="font-medium">
+                            {curr.flag} {curr.code}
+                          </span>
+                          <span className="text-sm text-neutral-500">
+                            {curr.symbol}
+                          </span>
                         </div>
-                        <div className="text-sm text-neutral-500">{curr.name}</div>
+                        <div className="text-sm text-neutral-500">
+                          {curr.name}
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -186,7 +198,11 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden ${iconButtonClasses}`}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -224,13 +240,13 @@ export default function Header() {
               FAQ
             </Link>
 
-            <Link
+            {/* <Link
               href="/contact"
               className="block px-4 py-2 text-neutral-700 hover:bg-neutral-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>
